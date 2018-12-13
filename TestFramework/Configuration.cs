@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace TestFramework
 {
-    class Configuration : IConfiguration
+    public class Configuration : IConfiguration
     {
         [JsonProperty("browser.WindowHeight")]
         public int? WindowHeight { get; set; }

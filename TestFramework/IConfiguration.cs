@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestFramework
 {
-    interface IConfiguration
+    public interface IConfiguration
     {
         TimeSpan DefaultWaitTimeout { get; }
 
