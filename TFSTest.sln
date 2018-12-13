@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFramework", "TestFramework\TestFramework.csproj", "{A02529B0-B794-43A6-8A50-86D68335142C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyotaSpec", "ToyotaSpec\ToyotaSpec.csproj", "{00DF693E-5744-41D8-987B-1A99EB9BF7E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A02529B0-B794-43A6-8A50-86D68335142C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02529B0-B794-43A6-8A50-86D68335142C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02529B0-B794-43A6-8A50-86D68335142C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02529B0-B794-43A6-8A50-86D68335142C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00DF693E-5744-41D8-987B-1A99EB9BF7E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00DF693E-5744-41D8-987B-1A99EB9BF7E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00DF693E-5744-41D8-987B-1A99EB9BF7E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00DF693E-5744-41D8-987B-1A99EB9BF7E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CF83D39-9CA9-4810-AB92-8182291CEE9C}
+	EndGlobalSection
+EndGlobal
