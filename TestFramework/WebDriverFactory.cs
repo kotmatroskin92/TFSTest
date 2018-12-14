@@ -16,7 +16,8 @@ namespace TestFramework
 
         public static IWebDriver CreateWebDriver(IConfiguration configuration, Log log)
         {
-            log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
+            //log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
+            log.Console.Info("Choosed browser from config: " + configuration.Browser);
             var driver = ResolveLocalDriver(configuration);
 
             ThreadDriver.Value = driver;

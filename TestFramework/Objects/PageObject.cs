@@ -32,7 +32,20 @@ namespace TestFramework.Objects
             return InternalFinder(targetElementlocator);
         }
 
-        protected IWebElement InternalFinder (By targetElementlocator)
+        protected bool IsPresent (By targetElementlocator)
+        {
+            try
+            {
+                InternalFinder(targetElementlocator);
+                return true;
+            }
+            catch (WebDriverTimeoutException)
+            {
+                return false;
+            }
+        }
+
+            protected IWebElement InternalFinder (By targetElementlocator)
         {
             try
                 {

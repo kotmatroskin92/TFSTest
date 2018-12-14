@@ -83,6 +83,7 @@
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Objects\ApplicationBase.cs" />
     <Compile Include="Objects\BaseTest.cs" />
+    <Compile Include="Objects\BaseForm.cs" />
     <Compile Include="Objects\NavigationObject.cs" />
     <Compile Include="Objects\PageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
