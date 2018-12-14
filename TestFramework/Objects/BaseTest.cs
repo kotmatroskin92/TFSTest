@@ -13,15 +13,13 @@ namespace TestFramework.Objects
         [TestInitialize]
         public virtual void InitBeforeTest()
         {
-
-            var Browser = LazyDriver;
-            Browser.NavigateTo(Configuration.StartPageUrl);
+            LazyDriver.NavigateTo(Configuration.StartPageUrl);
         }
 
         [TestCleanup]
         public virtual void CleanAfterTest()
         {
-            LazyDriver.Close();
+            LazyDriver.QuitWebDriver();
         }
     }
 }

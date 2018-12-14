@@ -28,5 +28,14 @@ namespace TestFramework.Objects
                 webDriver.Navigate().GoToUrl(url);
             }
         }
+
+        public static void QuitWebDriver(this IWebDriver webDriver)
+        {
+            if (webDriver != null)
+            {
+                webDriver.Quit();
+                webDriver.Dispose();
+            }
+        }
     }
 }
