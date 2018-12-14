@@ -11,7 +11,9 @@ namespace ToyotaSpec
         [TestMethod]
         public void TestMethod1()
         {
-            var a = new LoginPage(); 
+            var loginPage = new LoginPage();
+            loginPage.LogIn("tfs.automation.admin", "Password1!");
+            new LoginPage();
         }
     }
 }

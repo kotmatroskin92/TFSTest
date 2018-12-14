@@ -49,18 +49,12 @@ namespace TestFramework.Objects
         {
             try
                 {
-                    return new WebDriverWait(Driver, ResolveDefaultTimeout()).Until(ExpectedConditions.ElementIsVisible(targetElementlocator));
+                    return new WebDriverWait(Driver, Configuration.DefaultWaitTimeout).Until(ExpectedConditions.ElementIsVisible(targetElementlocator));
                 }
                 catch (WebDriverTimeoutException)
                 {
-                    throw new Exception($"WebDriverTimeoutException: Element {targetElementlocator} was not found for {ResolveDefaultTimeout()}");
+                    throw new Exception($"WebDriverTimeoutException: Element {targetElementlocator} was not found for {Configuration.DefaultWaitTimeout}");
                 }
-        }
-
-        protected virtual TimeSpan ResolveDefaultTimeout()
-        {
-            // return Configuration.DefaultWaitTimeout;
-            return TimeSpan.FromSeconds(10);
         }
     }
 }
