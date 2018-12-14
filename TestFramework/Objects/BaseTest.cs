@@ -15,7 +15,7 @@ namespace TestFramework.Objects
         {
 
             var Browser = LazyDriver;
-            Browser.NavigateTo("https://mail.ru/");
+            Browser.NavigateTo(Configuration.StartPageUrl);
         }
 
         [TestCleanup]

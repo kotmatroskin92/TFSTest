@@ -9,13 +9,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestFramework.Objects
 {
-    class BaseForm : PageObject
+    public class BaseForm : PageObject
     {
         protected WebDriverWait wait;
 
-        protected BaseForm(By targetElementlocator)
+        protected BaseForm(By targetElementlocator, String formName)
         {
             Assert.IsTrue(IsPresent(targetElementlocator), "Element is not present");
+            Log.Console.Info(formName + " was opened");
         }
     }
 }

@@ -24,6 +24,6 @@ namespace TestFramework
 
         bool MaximizeWindow { get; set; }
 
-        string RemoteWebDriverUri { get; set; }
+        string StartPageUrl { get; set; }
     }
 }

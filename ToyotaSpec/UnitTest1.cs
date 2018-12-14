@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework.Objects;
+using ToyotaSpec.Pages;
 
 namespace ToyotaSpec
 {
@@ -10,7 +11,7 @@ namespace ToyotaSpec
         [TestMethod]
         public void TestMethod1()
         {
-            var a = 1; 
+            var a = new LoginPage(); 
         }
     }
 }

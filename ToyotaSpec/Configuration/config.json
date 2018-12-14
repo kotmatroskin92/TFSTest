@@ -1,0 +1,8 @@
+﻿{
+  "StartPageUrl": "https://toyota.dev.flex.cafe/login?r=%2F",
+  "browser.name": "Firefox",
+  "browser.headless": false,
+  "browser.MaximizeWindow": false,
+  "browser.WindowHeight": 1080,
+  "browser.WindowWidth": 1920
+}

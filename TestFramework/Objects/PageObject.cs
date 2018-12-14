@@ -59,7 +59,8 @@ namespace TestFramework.Objects
 
         protected virtual TimeSpan ResolveDefaultTimeout()
         {
-            return Configuration.DefaultWaitTimeout;
+            // return Configuration.DefaultWaitTimeout;
+            return TimeSpan.FromSeconds(10);
         }
     }
 }

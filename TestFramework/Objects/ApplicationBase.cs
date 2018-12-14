@@ -2,29 +2,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestFramework.Logging;
 using System.Threading;
 using BoDi;
+using System.IO;
 
 namespace TestFramework.Objects
 {
     public class ApplicationBase
     {
-        //public ObjectContainer Container { get; }
-
         public IWebDriver LazyDriver =>
             _driver.Value ?? (_driver.Value = WebDriverFactory.CreateWebDriver(Configuration, Log));
-        public IConfiguration Configuration => new Configuration();
-        private readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
+        private static String pathToConfig = Directory.GetFiles(
+                Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+                $"Configuration\\config.json",
+                SearchOption.AllDirectories)[0];
+        protected static Configuration Configuration;
+
+        protected ApplicationBase()
+        {
+            Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(pathToConfig));
+        }
+        private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
         public Log Log => _log ?? new Log();
         private Log _log = new Log();
-
-        //protected ApplicationBase(ObjectContainer container)
-        //{
-        //    Container = container;
-        //}
 
         public void DeleteAllCookies()
         {

@@ -33,7 +33,7 @@ namespace TestFramework
         public bool IsHeadless { get; set; }
 
         [DefaultValue("")]
-        public string RemoteWebDriverUri { get; set; }
+        public string StartPageUrl { get; set; }
 
         public static T ParseConfiguration<T>(string jsonText) where T : IConfiguration
         {
