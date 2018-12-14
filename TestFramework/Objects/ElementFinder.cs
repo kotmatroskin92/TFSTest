@@ -15,10 +15,10 @@ using OpenQA.Selenium.Interactions;
 
 namespace TestFramework.Objects
 {
-    public abstract class PageObject : ApplicationBase
+    public abstract class ElementFinder : ApplicationBase
     {
 
-        protected PageObject()
+        protected ElementFinder()
         {
         }
 

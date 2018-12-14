@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace TestFramework.Objects
 {
-    public static class NavigationObject
+    public static class BrowserHelper
     {
 
         public static Log Log = new Log();

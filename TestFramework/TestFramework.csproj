@@ -84,8 +84,8 @@
     <Compile Include="Objects\ApplicationBase.cs" />
     <Compile Include="Objects\BaseTest.cs" />
     <Compile Include="Objects\BaseForm.cs" />
-    <Compile Include="Objects\NavigationObject.cs" />
-    <Compile Include="Objects\PageObject.cs" />
+    <Compile Include="Objects\BrowserHelper.cs" />
+    <Compile Include="Objects\ElementFinder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebDriverFactory.cs" />
   </ItemGroup>

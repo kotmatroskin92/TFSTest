@@ -9,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace TestFramework.Objects
 {
-    public class BaseForm : PageObject
+    public class BaseForm : ElementFinder
     {
         protected WebDriverWait wait;
 
