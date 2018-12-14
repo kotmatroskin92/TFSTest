@@ -27,23 +27,12 @@ namespace TestFramework.Objects
         public Log Log => _log ?? new Log();
         private Log _log = new Log();
 
-        public void DeleteAllCookies()
+        protected void DeleteAllCookies()
         {
             _driver.Value.Manage().Cookies.DeleteAllCookies();
         }
 
-        public void DeleteCookies(string[] excludeCookies)
-        {
-            foreach (var cookie in _driver.Value.Manage().Cookies.AllCookies)
-            {
-                if (!excludeCookies.Contains(cookie.Name))
-                {
-                    _driver.Value.Manage().Cookies.DeleteCookie(cookie);
-                }
-            }
-        }
-
-        public void ReloadWebDriver()
+        protected void ReloadWebDriver()
         {
             Log.TestLog.Warn("Reloading WebDriver.");
             if (_driver != null && _driver.IsValueCreated)
@@ -56,7 +45,7 @@ namespace TestFramework.Objects
             Log.TestLog.Warn("WebDriver reloaded.");
         }
 
-        public bool IsDriverValueCreated()
+        private bool IsDriverValueCreated()
         {
             return _driver.IsValueCreated;
         }

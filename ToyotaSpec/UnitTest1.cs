@@ -13,6 +13,9 @@ namespace ToyotaSpec
         {
             var loginPage = new LoginPage();
             loginPage.LogIn("tfs.automation.admin", "Password1!");
+
+            var homePage = new HomePage();
+            //homePage.TopMenuForm
         }
     }
 }
