@@ -32,6 +32,9 @@ namespace TestFramework
         [JsonProperty("browser.headless")]
         public bool IsHeadless { get; set; }
 
+        [DefaultValue("")]
+        public string RemoteWebDriverUri { get; set; }
+
         public static T ParseConfiguration<T>(string jsonText) where T : IConfiguration
         {
             return JsonConvert.DeserializeObject<T>(jsonText, new JsonSerializerSettings

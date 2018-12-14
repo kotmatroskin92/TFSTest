@@ -8,7 +8,7 @@ namespace TestFramework
 {
     public enum Browser
     {
-        Firefox,
-        Chrome
+        Chrome,
+        Firefox
     }
 }

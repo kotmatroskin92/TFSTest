@@ -15,28 +15,16 @@ using OpenQA.Selenium.Interactions;
 
 namespace TestFramework.Objects
 {
-    public abstract class PageObject
+    public abstract class PageObject : ApplicationBase
     {
 
-        protected PageObject(ApplicationBase application)
+        protected PageObject()
         {
-            Application = application; 
-        }
-
-        public ApplicationBase Application
-        {
-            get;
-            private set;
-        }
-
-        protected IConfiguration Configuration
-        {
-            get { return Application.Configuration; }
         }
 
         protected IWebDriver Driver
         {
-            get { return Application.LazyDriver; }
+            get { return LazyDriver; }
         }
 
         protected IWebElement WaitForElement(By targetElementlocator)

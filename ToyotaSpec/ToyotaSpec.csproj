@@ -16,4 +16,8 @@
     <PackageReference Include="WebDriver.ChromeDriver.win32" Version="2.45.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TestFramework\TestFramework.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -10,21 +10,21 @@ using BoDi;
 
 namespace TestFramework.Objects
 {
-    public abstract class ApplicationBase
+    public class ApplicationBase
     {
-        public ObjectContainer Container { get; }
+        //public ObjectContainer Container { get; }
 
         public IWebDriver LazyDriver =>
             _driver.Value ?? (_driver.Value = WebDriverFactory.CreateWebDriver(Configuration, Log));
-        public IConfiguration Configuration => Container.Resolve<IConfiguration>();
+        public IConfiguration Configuration => new Configuration();
         private readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
         public Log Log => _log ?? new Log();
         private Log _log = new Log();
 
-        protected ApplicationBase(ObjectContainer container)
-        {
-            Container = container;
-        }
+        //protected ApplicationBase(ObjectContainer container)
+        //{
+        //    Container = container;
+        //}
 
         public void DeleteAllCookies()
         {

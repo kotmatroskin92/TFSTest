@@ -23,5 +23,7 @@ namespace TestFramework
         int? WindowWidth { get; set; }
 
         bool MaximizeWindow { get; set; }
+
+        string RemoteWebDriverUri { get; set; }
     }
 }

@@ -67,17 +67,15 @@ namespace TestFramework
 
         public static IWebDriver CreateFirefoxDriver(IConfiguration configuration)
         {
-            var firefoxProfile = GetFirefoxOptions(configuration);
-            return new FirefoxDriver(firefoxProfile);
+            var firefoxOptions = GetFirefoxOptions(configuration);
+            return new FirefoxDriver("./");
         }
 
         public static IWebDriver CreateChromeDriver(IConfiguration configuration)
         {
-            ChromeDriverService chromeDriverService = ChromeDriverService.CreateDefaultService();
-            chromeDriverService.SuppressInitialDiagnosticInformation = true;
-            chromeDriverService.EnableVerboseLogging = false;
             var options = GetChromeOptions(configuration);
-            var chromeDriver = new ChromeDriver(chromeDriverService, options, configuration.DefaultCommandTimeout);
+            //var chromeDriver = new ChromeDriver("./", options, configuration.DefaultCommandTimeout);
+            var chromeDriver = new ChromeDriver("./");
             return chromeDriver;
         }
 
@@ -90,7 +88,6 @@ namespace TestFramework
                 chromeOptions.AddArgument("--headless");
             }
             chromeOptions.AddArgument("--disable-popup-blocking");
-            chromeOptions.SetLoggingPreference(LogType.Browser, LogLevel.Severe);
             return chromeOptions;
         }
 
