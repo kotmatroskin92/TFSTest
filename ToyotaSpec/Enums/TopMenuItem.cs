@@ -7,15 +7,13 @@ namespace ToyotaSpec.Enums
     public sealed class TopMenuItem
     {
         private readonly String name;
-        private readonly int value;
-
-        public static readonly TopMenuItem REPORTS = new TopMenuItem(1, ".nav-reports");
-        public static readonly TopMenuItem HOME = new TopMenuItem(2, ".nav-dashboard");
-
-        private TopMenuItem(int value, String name)
+        
+        public static readonly TopMenuItem REPORTS = new TopMenuItem(".nav-reports");
+        public static readonly TopMenuItem HOME = new TopMenuItem(".nav-dashboard");
+        
+        private TopMenuItem(String name)
         {
             this.name = name;
-            this.value = value;
         }
 
         public override String ToString()
