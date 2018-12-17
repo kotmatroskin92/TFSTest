@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TestFramework.Objects;
+using ToyotaSpec.Enums;
+using ToyotaSpec.Objects;
 using ToyotaSpec.Utils;
 
 namespace ToyotaSpec.Pages
@@ -18,12 +20,21 @@ namespace ToyotaSpec.Pages
         {
         }
 
+        public void SortTableBy(VinWalkTable vinWalkTable)
+        {
+            var element = new TableUtils(tableTabular).GetHeaderElementByIndex(vinWalkTable.Value);
+            if (element.Text == vinWalkTable.ToString())
+            {
+                element.Click();
+            }
+        }
+
         public void ParseTable()
         {
+            List<VINWalkTabular> ListTabular = new List<VINWalkTabular>(); 
             var table = new TableUtils(tableTabular);
-            var el = table.GetHeaderElementByIndex(1).Text;
-            var ell = table.GetBodyCells();
-            var text = ell[0][1].Text;
+            var bodyCells = table.GetBodyCells();
+            var text = bodyCells[2][1].Text;
         }
 
     }
