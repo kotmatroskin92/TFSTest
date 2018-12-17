@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFramework", "TestFramework\TestFramework.csproj", "{A02529B0-B794-43A6-8A50-86D68335142C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyotaSpec", "ToyotaSpec\ToyotaSpec.csproj", "{00DF693E-5744-41D8-987B-1A99EB9BF7E3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyotaSpec", "ToyotaSpec\ToyotaSpec.csproj", "{00DF693E-5744-41D8-987B-1A99EB9BF7E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +26,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\TransientFaultHandling.Core.5.1.1209.1\lib\NET4
 		SolutionGuid = {8CF83D39-9CA9-4810-AB92-8182291CEE9C}
 	EndGlobalSection
 EndGlobal
