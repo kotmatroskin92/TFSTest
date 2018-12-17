@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using TestFramework.Objects;
+using ToyotaSpec.Utils;
 
 namespace ToyotaSpec.Pages
 {
@@ -17,6 +18,13 @@ namespace ToyotaSpec.Pages
         {
         }
 
+        public void ParseTable()
+        {
+            var table = new TableUtils(tableTabular);
+            var el = table.GetHeaderElementByIndex(1).Text;
+            var ell = table.GetBodyCells();
+            var text = ell[0][1].Text;
+        }
 
     }
 }

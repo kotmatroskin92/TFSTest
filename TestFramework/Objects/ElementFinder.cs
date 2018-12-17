@@ -35,7 +35,7 @@ namespace TestFramework.Objects
             return InternalFinder(targetElementlocator);
         }
 
-        protected IReadOnlyCollection<IWebElement> FindElements(By targetElementlocator, By parentElementLocator = null)
+        protected ReadOnlyCollection<IWebElement> FindElements(By targetElementlocator, By parentElementLocator = null)
         {
             if (parentElementLocator != null)
             {
