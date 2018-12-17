@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework.Objects;
+using ToyotaSpec.Enums;
 using ToyotaSpec.Pages;
 
 namespace ToyotaSpec
@@ -15,7 +16,7 @@ namespace ToyotaSpec
             loginPage.LogIn("tfs.automation.admin", "Password1!");
 
             var homePage = new HomePage();
-            //homePage.TopMenuForm
+            homePage.TopMenuForm.NavigateTo(TopMenuItem.REPORTS);
         }
     }
 }
