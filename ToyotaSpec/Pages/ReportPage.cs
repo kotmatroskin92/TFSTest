@@ -10,10 +10,11 @@ namespace ToyotaSpec.Pages
     class ReportPage: BaseForm
     {
         private static readonly string lblReportNameTempl = "//*[@id='dropdownMenu2']//*[contains(text(), '{0}')]";
+        private readonly ReportName reportName;
 
         public ReportPage(ReportName reportName) : base(By.XPath(String.Format(lblReportNameTempl, reportName.ToString())), String.Format("{0} Report page", reportName.ToString()))
         {
+            this.reportName = reportName;
         }
-
     }
 }
