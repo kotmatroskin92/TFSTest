@@ -4,14 +4,13 @@ using System.Text;
 
 namespace ToyotaSpec.Enums
 {
-    public sealed class TopMenuItem
+    public sealed class ReportsFormItem
     {
         private readonly String name;
-        
-        public static readonly TopMenuItem REPORTS = new TopMenuItem(".nav-reports");
-        public static readonly TopMenuItem HOME = new TopMenuItem(".nav-dashboard");
-        
-        private TopMenuItem(String name)
+
+        public static readonly ReportsFormItem VINWALK = new ReportsFormItem("vinwalk");
+
+        private ReportsFormItem(String name)
         {
             this.name = name;
         }

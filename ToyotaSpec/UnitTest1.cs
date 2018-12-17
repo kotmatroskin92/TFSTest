@@ -17,6 +17,8 @@ namespace ToyotaSpec
 
             var homePage = new HomePage();
             homePage.TopMenuForm.NavigateTo(TopMenuItem.REPORTS);
+            var reportsPage = new ReportsPage();
+            reportsPage.NavigateTo(ReportsFormItem.VINWALK);
         }
     }
 }

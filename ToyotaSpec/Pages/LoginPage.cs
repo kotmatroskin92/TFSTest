@@ -12,7 +12,7 @@ namespace ToyotaSpec.Pages
         private static readonly By txbPassword = By.Id("password");
         private static readonly By btnLogin = By.XPath("//button[@type='submit']");
 
-        public LoginPage() : base(txbUsername, "Login page is open")
+        public LoginPage() : base(txbUsername, "Login page")
         {      
         }
 
