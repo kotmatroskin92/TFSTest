@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ToyotaSpec.Objects
+﻿namespace ToyotaSpec.Objects
 {
     public class VINWalkTabular
     {

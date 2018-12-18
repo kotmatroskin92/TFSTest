@@ -1,7 +1,5 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using OpenQA.Selenium;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 
@@ -9,15 +7,15 @@ namespace ToyotaSpec.Pages
 {
     public class ReportsPage: BaseForm
     {
-        private static string tableLocator = "//table[@class='table']";
+        private static readonly string _tableLocator = "//table[@class='table']";
 
-        public ReportsPage() : base(By.XPath(tableLocator), "Reports page")
+        public ReportsPage() : base(By.XPath(_tableLocator), "Reports page")
         {
         }
 
         public void NavigateTo(ReportsFormItem reportsItem)
         {
-            WaitForElement(By.XPath(String.Format("{0}//a[contains(@href, '{1}')]", tableLocator, reportsItem.ToString()))).Click();
+            WaitForElement(By.XPath(String.Format("{0}//a[contains(@href, '{1}')]", _tableLocator, reportsItem.ToString()))).Click();
         }
     }
 }

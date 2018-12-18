@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ToyotaSpec.Enums
 {
     public sealed class VinWalkTableItem
     {
-        private readonly String name;
+        private readonly String _name;
         public int Value { get; }
 
         public static readonly VinWalkTableItem VIN = new VinWalkTableItem(0, "VIN");
@@ -14,13 +12,13 @@ namespace ToyotaSpec.Enums
 
         private VinWalkTableItem(int value, String name)
         {
-            this.Value = value;
-            this.name = name;
+            Value = value;
+            _name = name;
         }
 
         public override String ToString()
         {
-            return name;
+            return _name;
         }
     }
 }

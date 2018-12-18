@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ToyotaSpec
+﻿namespace ToyotaSpec
 {
     public enum Browser
     {

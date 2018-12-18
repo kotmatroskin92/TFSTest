@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
@@ -23,7 +24,12 @@ namespace ToyotaSpec
             reportForm.ClickUpdate();
             vinWalkPage.SortTableBy(VinWalkTableItem.YEAR);
             var vinWalkTabulars = vinWalkPage.GetTabulars();
-            for ( var index=1; index < vinWalkTabulars.Count; index++)
+            AsserTabularSort(vinWalkTabulars);
+        }
+
+        private void AsserTabularSort(List<VINWalkTabular>  vinWalkTabulars)
+        {
+            for (var index = 1; index < vinWalkTabulars.Count; index++)
             {
                 var firstCar = vinWalkTabulars[index - 1];
                 var secondCar = vinWalkTabulars[index];

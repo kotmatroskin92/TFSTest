@@ -1,6 +1,4 @@
 ﻿using NLog;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Remote;
 
 namespace ToyotaSpec.Logging
 {

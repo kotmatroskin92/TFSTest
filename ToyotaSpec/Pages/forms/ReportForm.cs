@@ -1,7 +1,5 @@
-﻿using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using OpenQA.Selenium;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 
@@ -9,17 +7,19 @@ namespace ToyotaSpec.Pages
 {
     class ReportForm: BaseForm
     {
-        private static readonly string lblReportNameTempl = "//*[@id='dropdownMenu2']//*[contains(text(), '{0}')]";
-        private static readonly By btnSubmit = By.XPath("//button[contains(@class, 'submit-button') and not(@disabled)]");
+        private static readonly string _lblReportNameTempl = "//*[@id='dropdownMenu2']//*[contains(text(), '{0}')]";
+        private static readonly By _btnSubmit = By.XPath("//button[contains(@class, 'submit-button') and not(@disabled)]");
 
 
-        public ReportForm(ReportName reportName) : base(By.XPath(String.Format(lblReportNameTempl, reportName.ToString())), String.Format("{0} Report page", reportName.ToString()))
+        public ReportForm(ReportName reportName) : 
+            base(By.XPath(String.Format(_lblReportNameTempl, reportName.ToString())),
+                 String.Format("{0} Report page", reportName.ToString()))
         {
         }
 
         public void ClickUpdate()
         {
-            WaitForElement(btnSubmit).Click();
+            WaitForElement(_btnSubmit).Click();
         }
     }
 }

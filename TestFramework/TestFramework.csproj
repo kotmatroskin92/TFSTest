@@ -93,7 +93,6 @@
     <Compile Include="IConfiguration.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Objects\ApplicationBase.cs" />
-    <Compile Include="Objects\BaseTest.cs" />
     <Compile Include="Objects\BaseForm.cs" />
     <Compile Include="Objects\BrowserHelper.cs" />
     <Compile Include="Objects\ElementFinder.cs" />

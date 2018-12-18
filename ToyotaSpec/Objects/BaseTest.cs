@@ -1,7 +1,5 @@
 ﻿using System.IO;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Support.Events;
 using TestFramework.Utils;
 
 namespace ToyotaSpec.Objects
@@ -22,7 +20,6 @@ namespace ToyotaSpec.Objects
         [TestInitialize]
         public virtual void InitBeforeTest()
         {
-            var firingDriver = new EventFiringWebDriver(LazyDriver);
             LazyDriver.NavigateTo(Configuration.StartPageUrl);
         }
 
@@ -33,7 +30,6 @@ namespace ToyotaSpec.Objects
             {
                 PublishScreenshot(Configuration);
             }
-
             LazyDriver.QuitWebDriver();
         }
     }

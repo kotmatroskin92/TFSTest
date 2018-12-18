@@ -1,7 +1,6 @@
-﻿using ToyotaSpec.Logging;
-using System;
+﻿using System;
+using ToyotaSpec.Logging;
 using OpenQA.Selenium;
-using System.IO;
 
 namespace ToyotaSpec.Objects
 {
@@ -21,15 +20,6 @@ namespace ToyotaSpec.Objects
             NavigateTo(webDriver, newUrl);
         }
 
-        private static void NavigateTo(IWebDriver webDriver, Uri url)
-        {
-            if (webDriver.Url != url.ToString())
-            {
-                Log.TestLog.Info($"Navigate to URL: {url}");
-                webDriver.Navigate().GoToUrl(url);
-            }
-        }
-
         public static void QuitWebDriver(this IWebDriver webDriver)
         {
             if (webDriver != null)
@@ -43,6 +33,15 @@ namespace ToyotaSpec.Objects
         public static Screenshot TakeScreenshot(this IWebDriver driver)
         {
             return ((ITakesScreenshot)driver).GetScreenshot();
+        }
+
+        private static void NavigateTo(IWebDriver webDriver, Uri url)
+        {
+            if (webDriver.Url != url.ToString())
+            {
+                Log.TestLog.Info($"Navigate to URL: {url}");
+                webDriver.Navigate().GoToUrl(url);
+            }
         }
     }
 }

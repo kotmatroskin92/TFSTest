@@ -1,26 +1,25 @@
 ﻿using System;
+using System.Threading;
+using System.Drawing;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using System.Threading;
-using System.Drawing;
 using ToyotaSpec.Logging;
-using System.Text;
 
 namespace ToyotaSpec
 {
     class WebDriverFactory
     {
 
-        private static readonly ThreadLocal<IWebDriver> ThreadDriver = new ThreadLocal<IWebDriver>();
+        private static readonly ThreadLocal<IWebDriver> _threadDriver = new ThreadLocal<IWebDriver>();
 
         public static IWebDriver CreateWebDriver(IConfiguration configuration, Log log)
         {
             log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
             var driver = ResolveLocalDriver(configuration);
 
-            ThreadDriver.Value = driver;
+            _threadDriver.Value = driver;
 
             if (configuration.MaximizeWindow)
             {
@@ -34,7 +33,21 @@ namespace ToyotaSpec
                     configuration.WindowHeight.GetValueOrDefault(size.Height));
             }
 
-            return ThreadDriver.Value;
+            return _threadDriver.Value;
+        }
+
+        public static IWebDriver CreateFirefoxDriver(IConfiguration configuration)
+        {
+            var firefoxOptions = GetFirefoxOptions(configuration);
+
+            return new FirefoxDriver("./", firefoxOptions);
+        }
+
+        public static IWebDriver CreateChromeDriver(IConfiguration configuration)
+        {
+            var chromeOptions = GetChromeOptions(configuration);
+
+            return new ChromeDriver("./", chromeOptions);
         }
 
         private static IWebDriver ResolveLocalDriver(IConfiguration configuration)
@@ -57,18 +70,6 @@ namespace ToyotaSpec
             return driver;
         }
 
-        public static IWebDriver CreateFirefoxDriver(IConfiguration configuration)
-        {
-            var firefoxOptions = GetFirefoxOptions(configuration);
-            return new FirefoxDriver("./", firefoxOptions);
-        }
-
-        public static IWebDriver CreateChromeDriver(IConfiguration configuration)
-        {
-            var chromeOptions = GetChromeOptions(configuration);
-            return new ChromeDriver("./", chromeOptions);
-        }
-
         private static ChromeOptions GetChromeOptions(IConfiguration environmentConfig)
         {
             var chromeOptions = new ChromeOptions();
@@ -78,6 +79,7 @@ namespace ToyotaSpec
                 chromeOptions.AddArgument("--headless");
             }
             chromeOptions.AddArgument("--disable-popup-blocking");
+
             return chromeOptions;
         }
 
@@ -87,6 +89,7 @@ namespace ToyotaSpec
             firefoxProfile.AcceptUntrustedCertificates = true;
             firefoxProfile.SetPreference(CapabilityType.UnexpectedAlertBehavior, "ignore");
             var options = new FirefoxOptions { Profile = firefoxProfile };
+
             return options;
         }
     }
