@@ -7,19 +7,13 @@ namespace TestFramework.Utils
     {
         public static string GetAbsoluteFilePath(string path)
         {
-            try
-            {
-                var directory = Directory.GetParent(GetBaseDir()).Parent;
-                var absolutePath = Directory.GetFiles(
-                    directory.Parent.Parent.FullName,
-                    path,
-                    SearchOption.AllDirectories)[0];
-                return absolutePath;
-            }
-            catch (NullReferenceException e)
-            {
-                throw new NullReferenceException($"File {path} not found. {e}");
-            }
+            var directory = Directory.GetParent(GetBaseDir()).Parent;
+            var absolutePath = Directory.GetFiles(
+                directory?.Parent?.Parent?.FullName ?? throw new InvalidOperationException(),
+                path,
+                SearchOption.AllDirectories)[0];
+
+            return absolutePath;
         }
 
         public static void EnsureDirectoryExists(string directory)

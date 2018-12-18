@@ -7,18 +7,19 @@ namespace ToyotaSpec.Utils
 {
     public class TableUtils: ElementFinder
     {
-        private IWebElement _tableElement;
+        private readonly By _tableElementLocator;
         private readonly By _headerRows = By.XPath(".//tr[position()=1]//th");
         private readonly By _dataRowsLocator = By.XPath(".//tr[not(position()=1)]");
 
         public TableUtils(By tableElementLocator)
         {
-            _tableElement = WaitForElement(tableElementLocator);
+            WaitForElement(tableElementLocator);
+            _tableElementLocator = tableElementLocator;
         }
 
         public int GetIndexByText(By targetElementLocator, string text)
         {
-            var elements = FindElements(targetElementLocator);
+            var elements = FindElements(targetElementLocator, _tableElementLocator);
             for (int index=0;  index < elements.Count; index++)
             {
                 if (elements[index].Text == text)
@@ -37,7 +38,7 @@ namespace ToyotaSpec.Utils
 
         public ReadOnlyCollection<IWebElement> GetBodyElements()
         {
-            return FindElements(_dataRowsLocator);
+            return FindElements(_dataRowsLocator, _tableElementLocator);
         }
 
         public List<ReadOnlyCollection<IWebElement>> GetBodyCells()
@@ -54,7 +55,7 @@ namespace ToyotaSpec.Utils
 
         protected IWebElement GetElementByIndex(By targetElementLocator, int index)
         {
-            var elements = FindElements(targetElementLocator);
+            var elements = FindElements(targetElementLocator, _tableElementLocator);
 
             return elements[index];
         }

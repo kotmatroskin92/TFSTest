@@ -14,11 +14,6 @@ namespace TestFramework.Objects
 
         protected IWebDriver Driver => LazyDriver;
 
-        public IReadOnlyCollection<IWebElement> FindChildren(By parentLocator, By childLocator)
-        {
-            return WaitForElement(parentLocator).FindElements(childLocator);
-        }
-
         public bool IsTransient(Exception ex)
         {
             return ex is StaleElementReferenceException;
@@ -27,6 +22,11 @@ namespace TestFramework.Objects
         protected IWebElement WaitForElement(By targetElementlocator)
         {
             return InternalFinder(targetElementlocator);
+        }
+
+        protected IReadOnlyCollection<IWebElement> FindChildren(By parentLocator, By childLocator)
+        {
+            return WaitForElement(parentLocator).FindElements(childLocator);
         }
 
         protected ReadOnlyCollection<IWebElement> FindElements(By targetElementlocator, By parentElementLocator = null)
