@@ -8,12 +8,12 @@ using ToyotaSpec.Utils;
 
 namespace ToyotaSpec.Pages
 {
-    public class VINWalkPage: BaseForm
+    public class VinWalkPage: BaseForm
     {
         private static readonly By _lblIsSold = By.Id("facet-checkboxGroup-IsSold");
         private static readonly By _tableTabular = By.XPath("//div[@id='visualization-Tabular']");
 
-        public VINWalkPage(): base(_lblIsSold, "VIN Walk page")
+        public VinWalkPage(): base(_lblIsSold, "VIN Walk page")
         {
         }
 
@@ -26,7 +26,7 @@ namespace ToyotaSpec.Pages
             }
         }
 
-        public List<VINWalkTabular> GetTabulars()
+        public List<VINWalkTabular> GetTabular()
         {
             List<VINWalkTabular> listTabular = new List<VINWalkTabular>(); 
             var table = new TableUtils(_tableTabular);

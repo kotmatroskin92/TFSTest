@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TestFramework.Objects;
-using ToyotaSpec.Objects;
 
 namespace ToyotaSpec.Utils
 {

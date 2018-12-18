@@ -1,7 +1,5 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using TestFramework.Objects;
-using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 
 namespace ToyotaSpec.Pages
@@ -16,7 +14,7 @@ namespace ToyotaSpec.Pages
 
         public void NavigateTo(ReportsFormItem reportsItem)
         {
-            WaitForElement(By.XPath(String.Format("{0}//a[contains(@href, '{1}')]", _tableLocator, reportsItem.ToString()))).Click();
+            WaitForElement(By.XPath($"{_tableLocator}//a[contains(@href, '{reportsItem}')]")).Click();
         }
     }
 }

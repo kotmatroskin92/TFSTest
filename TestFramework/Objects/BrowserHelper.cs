@@ -24,7 +24,7 @@ namespace TestFramework.Objects
         {
             if (webDriver != null)
             {
-                Log.TestLog.Info($"Quit browser");
+                Log.TestLog.Info("Quit browser");
                 webDriver.Quit();
                 webDriver.Dispose();
             }

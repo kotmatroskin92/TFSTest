@@ -85,8 +85,7 @@ namespace TestFramework
 
         private static FirefoxOptions GetFirefoxOptions(IConfiguration configuration)
         {
-            var firefoxProfile = new FirefoxProfile();
-            firefoxProfile.AcceptUntrustedCertificates = true;
+            var firefoxProfile = new FirefoxProfile {AcceptUntrustedCertificates = true};
             firefoxProfile.SetPreference(CapabilityType.UnexpectedAlertBehavior, "ignore");
             var options = new FirefoxOptions { Profile = firefoxProfile };
 

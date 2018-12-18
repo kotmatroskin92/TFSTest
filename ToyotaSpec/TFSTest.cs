@@ -7,7 +7,7 @@ using ToyotaSpec.Pages;
 namespace ToyotaSpec
 {
     [TestClass]
-    public class TFSTest : BaseTest
+    public class TfsTest : BaseTest
 
     {
         [TestMethod]
@@ -18,21 +18,21 @@ namespace ToyotaSpec
             var homePage = new HomePage();
             homePage.TopMenuForm.NavigateTo(TopMenuItem.REPORTS);
             var reportsPage = new ReportsPage();
-            reportsPage.NavigateTo(ReportsFormItem.VINWALK);
-            var vinWalkPage = new VINWalkPage();
-            var reportForm = new ReportForm(ReportName.VINWALK);
+            reportsPage.NavigateTo(ReportsFormItem.VIN_WALK);
+            var vinWalkPage = new VinWalkPage();
+            var reportForm = new ReportForm(ReportName.VIN_WALK);
             reportForm.ClickUpdate();
             vinWalkPage.SortTableBy(VinWalkTableItem.YEAR);
-            var vinWalkTabulars = vinWalkPage.GetTabulars();
-            AssertTabularSort(vinWalkTabulars);
+            var vinWalkTabular = vinWalkPage.GetTabular();
+            AssertTabularSort(vinWalkTabular);
         }
 
-        private void AssertTabularSort(List<VINWalkTabular>  vinWalkTabulars)
+        private void AssertTabularSort(List<VINWalkTabular>  vinWalkTabular)
         {
-            for (var index = 1; index < vinWalkTabulars.Count; index++)
+            for (var index = 1; index < vinWalkTabular.Count; index++)
             {
-                var firstCar = vinWalkTabulars[index - 1];
-                var secondCar = vinWalkTabulars[index];
+                var firstCar = vinWalkTabular[index - 1];
+                var secondCar = vinWalkTabular[index];
                 Assert.IsTrue(firstCar.YEAR <= secondCar.YEAR,
                     $"Car {firstCar.YEAR} year is more than {secondCar.YEAR} car");
             }

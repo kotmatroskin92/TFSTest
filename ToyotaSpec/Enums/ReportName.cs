@@ -6,7 +6,7 @@ namespace ToyotaSpec.Enums
     {
         private readonly String _name;
 
-        public static readonly ReportName VINWALK = new ReportName("VIN Walk");
+        public static readonly ReportName VIN_WALK = new ReportName("VIN Walk");
 
         private ReportName(String name)
         {

@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using TestFramework.Objects;
-using ToyotaSpec.Objects;
 
 namespace ToyotaSpec.Pages
 {
@@ -33,7 +32,7 @@ namespace ToyotaSpec.Pages
         {
             TypeInUsername(username);
             TypeInPassword(password);
-            WaitForElement(_btnLogin).Click();
+            ClickLogin();
         }
     }
 }
