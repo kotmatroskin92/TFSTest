@@ -6,6 +6,7 @@ using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Drawing;
 using TestFramework.Logging;
+using System.Text;
 
 namespace TestFramework
 {
@@ -59,14 +60,13 @@ namespace TestFramework
         public static IWebDriver CreateFirefoxDriver(IConfiguration configuration)
         {
             var firefoxOptions = GetFirefoxOptions(configuration);
-            return new FirefoxDriver("./");
+            return new FirefoxDriver("./", firefoxOptions);
         }
 
         public static IWebDriver CreateChromeDriver(IConfiguration configuration)
         {
-            var options = GetChromeOptions(configuration);
-            var chromeDriver = new ChromeDriver("./", options);
-            return chromeDriver;
+            var chromeOptions = GetChromeOptions(configuration);
+            return new ChromeDriver("./", chromeOptions);
         }
 
         private static ChromeOptions GetChromeOptions(IConfiguration environmentConfig)
@@ -83,13 +83,10 @@ namespace TestFramework
 
         private static FirefoxOptions GetFirefoxOptions(IConfiguration configuration)
         {
-            var options = new FirefoxOptions();
             var firefoxProfile = new FirefoxProfile();
             firefoxProfile.AcceptUntrustedCertificates = true;
-            firefoxProfile.SetPreference("profile.accept_untrusted_certs", true);
-            firefoxProfile.SetPreference("dom.successive_dialog_time_limit", 0);
             firefoxProfile.SetPreference(CapabilityType.UnexpectedAlertBehavior, "ignore");
-            options.Profile = firefoxProfile;
+            var options = new FirefoxOptions { Profile = firefoxProfile };
             return options;
         }
     }

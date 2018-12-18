@@ -3,6 +3,7 @@ using System;
 using TestFramework.Logging;
 using System.Threading;
 using System.IO;
+using System.Text;
 
 namespace TestFramework.Objects
 {
@@ -18,6 +19,7 @@ namespace TestFramework.Objects
 
         protected ApplicationBase()
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(pathToConfig));
         }
         private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
