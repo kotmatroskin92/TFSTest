@@ -16,8 +16,7 @@ namespace TestFramework
 
         public static IWebDriver CreateWebDriver(IConfiguration configuration, Log log)
         {
-            //log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
-            log.Console.Info("Choosed browser from config: " + configuration.Browser);
+            log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
             var driver = ResolveLocalDriver(configuration);
 
             ThreadDriver.Value = driver;
@@ -29,21 +28,12 @@ namespace TestFramework
             else
             {
                 var size = driver.Manage().Window.Size;
-                log.TestLog.Trace($"Window.Size: {size.Width} width and {size.Height} height. Size is changing");
+                log.TestLog.Trace($"Change Window.Size to: {size.Width} width and {size.Height} height.");
                 driver.Manage().Window.Size = new Size(configuration.WindowWidth.GetValueOrDefault(size.Width),
                     configuration.WindowHeight.GetValueOrDefault(size.Height));
             }
 
-            LogWebdriverInfo(driver, log);
             return ThreadDriver.Value;
-        }
-
-        public static void LogWebdriverInfo(IWebDriver driver, Log log)
-        {
-            var cap = ((RemoteWebDriver)driver).Capabilities;
-            var browserName = cap.GetCapability("browserName");
-            log.TestLog.Trace("Webdriver browser name: " + browserName);
-            log.TestLog.Trace("Browser size: " + driver.Manage().Window.Size);
         }
 
         private static IWebDriver ResolveLocalDriver(IConfiguration configuration)
@@ -75,8 +65,7 @@ namespace TestFramework
         public static IWebDriver CreateChromeDriver(IConfiguration configuration)
         {
             var options = GetChromeOptions(configuration);
-            //var chromeDriver = new ChromeDriver("./", options, configuration.DefaultCommandTimeout);
-            var chromeDriver = new ChromeDriver("./");
+            var chromeDriver = new ChromeDriver("./", options);
             return chromeDriver;
         }
 
