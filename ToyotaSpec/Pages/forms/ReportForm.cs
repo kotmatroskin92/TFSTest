@@ -10,7 +10,7 @@ namespace ToyotaSpec.Pages
     class ReportForm: BaseForm
     {
         private static readonly string lblReportNameTempl = "//*[@id='dropdownMenu2']//*[contains(text(), '{0}')]";
-        private static readonly By btnSubmit = By.XPath("//button[contains(@class, 'submit-button')]");
+        private static readonly By btnSubmit = By.XPath("//button[contains(@class, 'submit-button') and not(@disabled)]");
 
 
         public ReportForm(ReportName reportName) : base(By.XPath(String.Format(lblReportNameTempl, reportName.ToString())), String.Format("{0} Report page", reportName.ToString()))

@@ -1,20 +1,16 @@
 ﻿using Microsoft.Practices.TransientFaultHandling;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Threading;
-using OpenQA.Selenium.Interactions;
 
 namespace TestFramework.Objects
 {
     public abstract class ElementFinder : ApplicationBase, ITransientErrorDetectionStrategy
     {
-        private readonly RetryStrategy simpleStrategy = new Incremental(5, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+        private readonly RetryStrategy simpleStrategy = new Incremental(4, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(0.5));
 
         protected ElementFinder()
         {
