@@ -1,10 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using TestFramework.Logging;
 using System.Threading;
-using BoDi;
 using System.IO;
 
 namespace TestFramework.Objects
@@ -27,11 +24,6 @@ namespace TestFramework.Objects
         public Log Log => _log ?? new Log();
         private Log _log = new Log();
 
-        protected void DeleteAllCookies()
-        {
-            _driver.Value.Manage().Cookies.DeleteAllCookies();
-        }
-
         protected void ReloadWebDriver()
         {
             Log.TestLog.Warn("Reloading WebDriver.");
@@ -43,11 +35,6 @@ namespace TestFramework.Objects
 
             _driver.Value = WebDriverFactory.CreateWebDriver(Configuration, Log);
             Log.TestLog.Warn("WebDriver reloaded.");
-        }
-
-        private bool IsDriverValueCreated()
-        {
-            return _driver.IsValueCreated;
         }
     }
 }

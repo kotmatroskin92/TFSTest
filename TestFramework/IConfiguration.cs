@@ -10,10 +10,6 @@ namespace TestFramework
     {
         TimeSpan DefaultWaitTimeout { get; }
 
-        TimeSpan DefaultCommandTimeout { get; }
-
-        TimeSpan IsPresentTimeout { get; }
-
         Browser Browser { get; }
 
         bool IsHeadless { get; set; }

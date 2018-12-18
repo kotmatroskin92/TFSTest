@@ -17,14 +17,8 @@ namespace TestFramework
         [DefaultValue(typeof(bool), "false")]
         public bool MaximizeWindow { get; set; }
 
-        [DefaultValue(typeof(TimeSpan), "00:01:30")]
+        [DefaultValue(typeof(TimeSpan), "00:01:00")]
         public TimeSpan DefaultWaitTimeout { get; set; }
-
-        [DefaultValue(typeof(TimeSpan), "00:01:30")]
-        public TimeSpan DefaultCommandTimeout { get; set; }
-
-        [DefaultValue(typeof(TimeSpan), "00:00:30")]
-        public TimeSpan IsPresentTimeout { get; set; }
 
         [JsonProperty("browser.name")]
         public Browser Browser { get; set; }

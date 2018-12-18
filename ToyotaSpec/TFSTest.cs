@@ -6,11 +6,11 @@ using ToyotaSpec.Pages;
 namespace ToyotaSpec
 {
     [TestClass]
-    public class UnitTest1 : BaseTest
+    public class TFSTest : BaseTest
 
     {
         [TestMethod]
-        public void TestMethod1()
+        public void VinWalkTest()
         {
             var loginPage = new LoginPage();
             loginPage.LogIn("tfs.automation.admin", "Password1!");
