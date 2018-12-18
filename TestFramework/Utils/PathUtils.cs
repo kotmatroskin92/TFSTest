@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 
-
 namespace TestFramework.Utils
 {
     public static class PathUtils

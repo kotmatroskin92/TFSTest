@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using Newtonsoft.Json;
 
-namespace ToyotaSpec
+namespace TestFramework
 {
     public class Configuration : IConfiguration
     {

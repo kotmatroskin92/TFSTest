@@ -1,4 +1,4 @@
-﻿namespace ToyotaSpec
+﻿namespace TestFramework
 {
     public enum Browser
     {

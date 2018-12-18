@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Threading;
 using System.Drawing;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
-using ToyotaSpec.Logging;
+using TestFramework.Logging;
 
-namespace ToyotaSpec
+namespace TestFramework
 {
     class WebDriverFactory
     {

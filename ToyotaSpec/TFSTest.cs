@@ -24,17 +24,17 @@ namespace ToyotaSpec
             reportForm.ClickUpdate();
             vinWalkPage.SortTableBy(VinWalkTableItem.YEAR);
             var vinWalkTabulars = vinWalkPage.GetTabulars();
-            AsserTabularSort(vinWalkTabulars);
+            AssertTabularSort(vinWalkTabulars);
         }
 
-        private void AsserTabularSort(List<VINWalkTabular>  vinWalkTabulars)
+        private void AssertTabularSort(List<VINWalkTabular>  vinWalkTabulars)
         {
             for (var index = 1; index < vinWalkTabulars.Count; index++)
             {
                 var firstCar = vinWalkTabulars[index - 1];
                 var secondCar = vinWalkTabulars[index];
                 Assert.IsTrue(firstCar.YEAR <= secondCar.YEAR,
-                    string.Format("Car {0} year is more than {1} car", firstCar.YEAR, secondCar.YEAR));
+                    $"Car {firstCar.YEAR} year is more than {secondCar.YEAR} car");
             }
         }
     }

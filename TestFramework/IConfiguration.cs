@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToyotaSpec
+namespace TestFramework
 {
     public interface IConfiguration
     {

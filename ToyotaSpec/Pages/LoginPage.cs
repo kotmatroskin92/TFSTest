@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using TestFramework.Objects;
 using ToyotaSpec.Objects;
 
 namespace ToyotaSpec.Pages

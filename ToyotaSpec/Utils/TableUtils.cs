@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using TestFramework.Objects;
 using ToyotaSpec.Objects;
 
 namespace ToyotaSpec.Utils
@@ -13,7 +14,7 @@ namespace ToyotaSpec.Utils
 
         public TableUtils(By tableElementLocator)
         {
-            this._tableElement = WaitForElement(tableElementLocator);
+            _tableElement = WaitForElement(tableElementLocator);
         }
 
         public int GetIndexByText(By targetElementLocator, string text)
@@ -32,12 +33,12 @@ namespace ToyotaSpec.Utils
 
         public IWebElement GetHeaderElementByIndex(int index)
         {
-            return GetElementByIndex(this._headerRows, index);
+            return GetElementByIndex(_headerRows, index);
         }
 
         public ReadOnlyCollection<IWebElement> GetBodyElements()
         {
-            return FindElements(this._dataRowsLocator);
+            return FindElements(_dataRowsLocator);
         }
 
         public List<ReadOnlyCollection<IWebElement>> GetBodyCells()

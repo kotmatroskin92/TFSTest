@@ -1,6 +1,6 @@
 ﻿using NLog;
 
-namespace ToyotaSpec.Logging
+namespace TestFramework.Logging
 {
     public class Log
     {
