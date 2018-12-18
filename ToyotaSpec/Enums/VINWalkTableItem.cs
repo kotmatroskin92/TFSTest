@@ -4,15 +4,15 @@ using System.Text;
 
 namespace ToyotaSpec.Enums
 {
-    public sealed class VinWalkTable
+    public sealed class VinWalkTableItem
     {
         private readonly String name;
         public int Value { get; }
 
-        public static readonly VinWalkTable VIN = new VinWalkTable(0, "VIN");
-        public static readonly VinWalkTable YEAR = new VinWalkTable(1, "Year");
+        public static readonly VinWalkTableItem VIN = new VinWalkTableItem(0, "VIN");
+        public static readonly VinWalkTableItem YEAR = new VinWalkTableItem(1, "Year");
 
-        private VinWalkTable(int value, String name)
+        private VinWalkTableItem(int value, String name)
         {
             this.Value = value;
             this.name = name;

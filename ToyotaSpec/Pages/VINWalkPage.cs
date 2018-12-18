@@ -13,14 +13,14 @@ namespace ToyotaSpec.Pages
     {
         private static readonly By lblIsSold = By.Id("facet-checkboxGroup-IsSold");
         private static readonly By tableTabular = By.XPath("//div[@id='visualization-Tabular']");
-        private static readonly By headerRows = By.XPath(".//tr[position()=1]//th");
-        private static readonly By dataRowsLocator = By.XPath(".//tr[not(position()=1)]");
+        //private static readonly By headerRows = By.XPath(".//tr[position()=1]//th");
+        //private static readonly By dataRowsLocator = By.XPath(".//tr[not(position()=1)]");
 
         public VINWalkPage(): base(lblIsSold, "VIN Walk page")
         {
         }
 
-        public void SortTableBy(VinWalkTable vinWalkTable)
+        public void SortTableBy(VinWalkTableItem vinWalkTable)
         {
             var element = new TableUtils(tableTabular).GetHeaderElementByIndex(vinWalkTable.Value);
             if (element.Text == vinWalkTable.ToString())
@@ -29,12 +29,16 @@ namespace ToyotaSpec.Pages
             }
         }
 
-        public void ParseTable()
+        public List<VINWalkTabular> GetTabulars()
         {
-            List<VINWalkTabular> ListTabular = new List<VINWalkTabular>(); 
+            List<VINWalkTabular> listTabular = new List<VINWalkTabular>(); 
             var table = new TableUtils(tableTabular);
             var bodyCells = table.GetBodyCells();
-            var text = bodyCells[2][1].Text;
+            foreach (var cells in bodyCells)
+            {
+                listTabular.Add(new VINWalkTabular(cells[VinWalkTableItem.VIN.Value].Text, Int32.Parse(cells[VinWalkTableItem.YEAR.Value].Text)));
+            }
+            return listTabular;
         }
 
     }
