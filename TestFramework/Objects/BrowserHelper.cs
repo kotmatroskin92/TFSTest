@@ -1,6 +1,7 @@
 ﻿using ToyotaSpec.Logging;
 using System;
 using OpenQA.Selenium;
+using System.IO;
 
 namespace ToyotaSpec.Objects
 {
@@ -37,6 +38,11 @@ namespace ToyotaSpec.Objects
                 webDriver.Quit();
                 webDriver.Dispose();
             }
+        }
+
+        public static Screenshot TakeScreenshot(this IWebDriver driver)
+        {
+            return ((ITakesScreenshot)driver).GetScreenshot();
         }
     }
 }

@@ -21,5 +21,7 @@ namespace ToyotaSpec
         bool MaximizeWindow { get; set; }
 
         string StartPageUrl { get; set; }
+
+        string ScreenshotFolder { get; set; }
     }
 }

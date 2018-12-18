@@ -11,8 +11,25 @@ namespace TestFramework.Utils
     {
         public static string GetAbsoluteFilePath(string path)
         {
-            return Directory.GetFiles(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-                path, SearchOption.AllDirectories)[0];
+            var absolutePath = Directory.GetFiles(
+                Directory.GetParent(GetBaseDir()).Parent.Parent.Parent.FullName,
+                path,
+                SearchOption.AllDirectories)[0];
+
+            return absolutePath;
+        }
+
+        public static void EnsureDirectoryExists(string directory)
+        {
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+        }
+
+        public static string GetBaseDir()
+        {
+            return AppDomain.CurrentDomain.BaseDirectory;
         }
     }
 }

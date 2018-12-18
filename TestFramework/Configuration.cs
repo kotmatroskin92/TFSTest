@@ -29,6 +29,9 @@ namespace ToyotaSpec
         [DefaultValue("")]
         public string StartPageUrl { get; set; }
 
+        [DefaultValue("screenshots")]
+        public string ScreenshotFolder { get; set; }
+
         public static T ParseConfiguration<T>(string jsonText) where T : IConfiguration
         {
             return JsonConvert.DeserializeObject<T>(jsonText, new JsonSerializerSettings
