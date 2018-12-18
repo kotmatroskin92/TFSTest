@@ -1,8 +1,8 @@
-﻿using TestFramework.Logging;
+﻿using ToyotaSpec.Logging;
 using System;
 using OpenQA.Selenium;
 
-namespace TestFramework.Objects
+namespace ToyotaSpec.Objects
 {
     public static class BrowserHelper
     {

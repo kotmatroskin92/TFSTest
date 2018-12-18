@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestFramework
+namespace ToyotaSpec
 {
     public enum Browser
     {

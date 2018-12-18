@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestFramework.Objects;
+using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Pages;
 
@@ -13,7 +13,7 @@ namespace ToyotaSpec
         public void VinWalkTest()
         {
             var loginPage = new LoginPage();
-            loginPage.LogIn("tfs.automation.admin", "Password1!");
+            loginPage.LogIn(TestData.Login, TestData.Password);
             var homePage = new HomePage();
             homePage.TopMenuForm.NavigateTo(TopMenuItem.REPORTS);
             var reportsPage = new ReportsPage();

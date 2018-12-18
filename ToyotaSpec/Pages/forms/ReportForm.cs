@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using TestFramework.Objects;
+using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 
 namespace ToyotaSpec.Pages

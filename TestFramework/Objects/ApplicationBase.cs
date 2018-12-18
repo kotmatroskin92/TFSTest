@@ -1,11 +1,11 @@
 ﻿using OpenQA.Selenium;
 using System;
-using TestFramework.Logging;
+using ToyotaSpec.Logging;
 using System.Threading;
 using System.IO;
 using System.Text;
 
-namespace TestFramework.Objects
+namespace ToyotaSpec.Objects
 {
     public class ApplicationBase
     {

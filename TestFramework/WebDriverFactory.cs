@@ -5,10 +5,10 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using System.Threading;
 using System.Drawing;
-using TestFramework.Logging;
+using ToyotaSpec.Logging;
 using System.Text;
 
-namespace TestFramework
+namespace ToyotaSpec
 {
     class WebDriverFactory
     {

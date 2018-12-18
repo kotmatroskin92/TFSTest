@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace TestFramework.Objects
+namespace ToyotaSpec.Objects
 {
     public abstract class ElementFinder : ApplicationBase, ITransientErrorDetectionStrategy
     {

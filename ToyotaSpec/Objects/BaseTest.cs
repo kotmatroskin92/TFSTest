@@ -11,17 +11,17 @@ namespace ToyotaSpec.Objects
     [TestClass]
     public abstract class BaseTest: ApplicationBase
     {
-        //private static String pathToConfig = Directory.GetFiles(
-        //Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-        //$"Configuration\\testData.json",
-        //SearchOption.AllDirectories)[0];
-        //protected static TestData TestData;
+        protected static TestData TestData { private set; get; }
 
-        //protected ApplicationBase()
-        //{
-        //    Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-        //    Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(pathToConfig));
-        //}
+        [AssemblyInitialize]
+        public static void AssemblyInitialize(TestContext context)
+        {
+        string pathToConfig = Directory.GetFiles(
+            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
+            $"Configuration\\testData.json", SearchOption.AllDirectories)[0];
+        TestData = TestData.ParseConfiguration<TestData>(File.ReadAllText(pathToConfig));
+
+        }
 
         [TestInitialize]
         public virtual void InitBeforeTest()

@@ -2,7 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 
-namespace TestFramework.Logging
+namespace ToyotaSpec.Logging
 {
     public class Log
     {

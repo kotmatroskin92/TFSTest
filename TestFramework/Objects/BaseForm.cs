@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestFramework.Objects
+namespace ToyotaSpec.Objects
 {
     public class BaseForm : ElementFinder
     {
