@@ -8,7 +8,7 @@ namespace ToyotaSpec.Objects
 
         public string Password { get; set; }
 
-        public static T ParseConfiguration<T>(string jsonText)
+        public static T ParseJson<T>(string jsonText)
         {
             return JsonConvert.DeserializeObject<T>(jsonText, new JsonSerializerSettings
             {

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestFramework.Utils;
 
 namespace ToyotaSpec.Objects
 {
@@ -16,11 +13,8 @@ namespace ToyotaSpec.Objects
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext context)
         {
-        string pathToConfig = Directory.GetFiles(
-            Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-            $"Configuration\\testData.json", SearchOption.AllDirectories)[0];
-        TestData = TestData.ParseConfiguration<TestData>(File.ReadAllText(pathToConfig));
-
+            var pathToTestData = PathUtils.GetAbsoluteFilePath($"Configuration\\testData.json");
+            TestData = TestData.ParseJson<TestData>(File.ReadAllText(pathToTestData));
         }
 
         [TestInitialize]

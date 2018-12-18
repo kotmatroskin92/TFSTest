@@ -4,6 +4,7 @@ using ToyotaSpec.Logging;
 using System.Threading;
 using System.IO;
 using System.Text;
+using TestFramework.Utils;
 
 namespace ToyotaSpec.Objects
 {
@@ -11,15 +12,12 @@ namespace ToyotaSpec.Objects
     {
         public IWebDriver LazyDriver =>
             _driver.Value ?? (_driver.Value = WebDriverFactory.CreateWebDriver(Configuration, Log));
-        private static String pathToConfig = Directory.GetFiles(
-                Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName,
-                $"Configuration\\config.json",
-                SearchOption.AllDirectories)[0];
         protected static Configuration Configuration;
 
         protected ApplicationBase()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            var pathToConfig = PathUtils.GetAbsoluteFilePath($"Configuration\\config.json");
             Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(pathToConfig));
         }
         private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
