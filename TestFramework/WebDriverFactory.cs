@@ -6,6 +6,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using TestFramework.Logging;
+using TestFramework.Utils;
 
 namespace TestFramework
 {
@@ -86,6 +87,14 @@ namespace TestFramework
         private static FirefoxOptions GetFirefoxOptions(IConfiguration configuration)
         {
             var firefoxProfile = new FirefoxProfile {AcceptUntrustedCertificates = true};
+            firefoxProfile.SetPreference("browser.download.dir", PathUtils.BuildAbsolutePath(configuration.DownloadsFolder));
+            firefoxProfile.SetPreference("browser.download.folderList", 2);
+            firefoxProfile.SetPreference("browser.download.useDownloadDir", true);
+            firefoxProfile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "text/csv;application/vnd.ms-excel;application/vnd.ms-excel.addin.macroenabled.12;application/vnd.ms-excelsheet.binary.macroenabled.12;application/vnd.ms-excel.template.macroenabled.12;application/vnd.ms-excel.sheet.macroenabled.12;application/");
+            firefoxProfile.SetPreference("browser.helperApps.alwaysAsk.force", false);
+            firefoxProfile.SetPreference("browser.download.manager.closeWhenDone", true);
+            firefoxProfile.SetPreference("browser.download.manager.showAlertOnComplete", false);
+            firefoxProfile.SetPreference("dom.disable_beforeunload", true);
             firefoxProfile.SetPreference(CapabilityType.UnexpectedAlertBehavior, "ignore");
             var options = new FirefoxOptions { Profile = firefoxProfile };
 
