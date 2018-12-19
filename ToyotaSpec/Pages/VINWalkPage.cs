@@ -12,6 +12,8 @@ namespace ToyotaSpec.Pages
     {
         private static readonly By _lblIsSold = By.Id("facet-checkboxGroup-IsSold");
         private static readonly By _tableTabular = By.XPath("//div[@id='visualization-Tabular']");
+        private static readonly By _btnExportCsv = By.Id("export-Csv");
+        private static readonly By _btnExportExcel = By.Id("export-Excel");
 
         public VinWalkPage(): base(_lblIsSold, "VIN Walk page")
         {
@@ -38,6 +40,16 @@ namespace ToyotaSpec.Pages
 
             return listTabular;
         }
+
+        public void ClickExportCsv()
+        {
+            WaitForElement(_btnExportCsv).Click();
+        } 
+
+        public void ClickExportExcel()
+        {
+            WaitForElement(_btnExportExcel).Click();
+        } 
 
     }
 }

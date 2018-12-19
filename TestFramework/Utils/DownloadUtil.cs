@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using TestFramework.Objects;
 
 namespace TestFramework.Utils
 {
-    public class FileDownloader : ApplicationBase
+    public class DownloadUtil : ApplicationBase
     {
         private static readonly string[] _tempFileParts = { "part", "crdownload" };
         private static readonly string _directory = Configuration.DownloadsFolder;
@@ -31,11 +28,10 @@ namespace TestFramework.Utils
                 return true;
             }
 
-            var patternHasExtension = fileNamePattern.Contains('.');
-            var nameWithoutExtension = patternHasExtension ? fileNamePattern.Substring(0, fileNamePattern.LastIndexOf('.')) : fileNamePattern;
-            return Directory.GetFiles(_directory, nameWithoutExtension).Any(file =>
+            return Directory.GetFiles(_directory, fileNamePattern).Any(file =>
             {
                 var lastFileNamePrefix = file.Split('.').LastOrDefault();
+
                 return _tempFileParts.Any(tempExtension => tempExtension.Equals(lastFileNamePrefix));
             });
         }
@@ -52,6 +48,7 @@ namespace TestFramework.Utils
                 }
                 Thread.Sleep(sleepTime);
             }
+
             return Directory.GetFiles(_directory, fileNamePattern);
         }
 
@@ -62,27 +59,15 @@ namespace TestFramework.Utils
                 return "Download directory not found";
             }
             var fileNames = Directory.GetFiles(_directory).Select(Path.GetFileName);
+
             return $"Files in download directory:\r\n{string.Join("\r\n", fileNames)}";
         }
 
-        public static void Clear()
+        public static void ClearDir()
         {
             if (Directory.Exists(_directory))
             {
                 Directory.Delete(_directory, true);
-            }
-        }
-
-        public static bool TryToClear()
-        {
-            try
-            {
-                Clear();
-                return true;
-            }
-            catch (Exception e)
-            {
-                return false;
             }
         }
     }

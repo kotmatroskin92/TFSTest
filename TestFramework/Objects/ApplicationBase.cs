@@ -10,7 +10,9 @@ namespace TestFramework.Objects
 {
     public class ApplicationBase
     {
-        protected static Configuration Configuration;
+        private static readonly string _pathToConfig = PathUtils.GetAbsoluteFilePath($"Configuration\\config.json");
+        protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
+
         private readonly Log _log = new Log();
         private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
 
@@ -21,8 +23,6 @@ namespace TestFramework.Objects
         protected ApplicationBase()
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            var pathToConfig = PathUtils.GetAbsoluteFilePath($"Configuration\\config.json");
-            Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(pathToConfig));
         }
         
         public void PublishScreenshot(IConfiguration configuration)
