@@ -71,15 +71,17 @@ namespace TestFramework
             return driver;
         }
 
-        private static ChromeOptions GetChromeOptions(IConfiguration environmentConfig)
+        private static ChromeOptions GetChromeOptions(IConfiguration configuration)
         {
             var chromeOptions = new ChromeOptions();
 
-            if (environmentConfig.IsHeadless)
+            if (configuration.IsHeadless)
             {
                 chromeOptions.AddArgument("--headless");
             }
             chromeOptions.AddArgument("--disable-popup-blocking");
+            chromeOptions.AddUserProfilePreference("download.prompt_for_download", "false");
+            chromeOptions.AddUserProfilePreference("download.default_directory", PathUtils.BuildAbsolutePath(configuration.DownloadsFolder));
 
             return chromeOptions;
         }
