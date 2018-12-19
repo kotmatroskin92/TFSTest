@@ -19,5 +19,7 @@ namespace TestFramework
         string StartPageUrl { get; set; }
 
         string ScreenshotFolder { get; set; }
+
+        string DownloadsFolder { get; set; }
     }
 }

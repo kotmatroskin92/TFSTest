@@ -28,8 +28,11 @@ namespace TestFramework
         [DefaultValue("")]
         public string StartPageUrl { get; set; }
 
-        [DefaultValue("screenshots")]
+        [DefaultValue("{currentDir}\\screenshots")]
         public string ScreenshotFolder { get; set; }
+
+        [DefaultValue("C:\\Autotest\\downloads")]
+        public string DownloadsFolder { get; set; }
 
         public static T ParseConfiguration<T>(string jsonText) where T : IConfiguration
         {

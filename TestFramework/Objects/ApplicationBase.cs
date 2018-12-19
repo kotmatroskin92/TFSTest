@@ -28,7 +28,7 @@ namespace TestFramework.Objects
         public void PublishScreenshot(IConfiguration configuration)
         {
             var screenshot = LazyDriver.TakeScreenshot();
-            var directory = Path.Combine(PathUtils.GetBaseDir(), configuration.ScreenshotFolder);
+            var directory = PathUtils.BuildAbsolutePath(configuration.ScreenshotFolder);
             PathUtils.EnsureDirectoryExists(directory);
             var path = Path.Combine(directory, $"_{DateTime.Now:yyyyMMddHHmmss}.png");
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
