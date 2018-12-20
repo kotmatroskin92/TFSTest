@@ -35,6 +35,7 @@ namespace ToyotaSpec
             var downloadedFile = DownloadUtil.WaitForDownload("vinwalk_*.csv", TimeSpan.FromSeconds(60)).First();
             var csvUtils = new CsvUtils(downloadedFile);
             var tabular = csvUtils.GetListOf<VinWalkTabular>();
+            var vinWalkTabular = vinWalkPage.GetFullTabular();
         }
 
     }

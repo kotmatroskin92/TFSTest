@@ -9,7 +9,7 @@ namespace ToyotaSpec.Utils
     {
         private readonly By _tableElementLocator;
         private readonly By _headerRows = By.XPath(".//tr[position()=1]//th");
-        private readonly By _dataRowsLocator = By.XPath(".//tr[not(position()=1)]");
+        private readonly By _dataRowsLocator = By.XPath(".//tr[td]");
 
         public TableUtils(By tableElementLocator)
         {
