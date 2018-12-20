@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using TestFramework.Utils;
 using ToyotaSpec.Enums;
+using ToyotaSpec.Models;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Pages;
 using ToyotaSpec.Utils;

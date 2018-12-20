@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TestFramework.Objects;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
+using ToyotaSpec.Models;
 using ToyotaSpec.Utils;
 
 namespace ToyotaSpec.Pages
@@ -30,17 +31,38 @@ namespace ToyotaSpec.Pages
 
         public List<VinWalkTabular> GetTabular()
         {
-            List<VinWalkTabular> listTabular = new List<VinWalkTabular>(); 
+            var tabularList = new List<VinWalkTabular>(); 
             var table = new TableUtils(_tableTabular);
             var bodyCells = table.GetBodyCells();
             foreach (var cells in bodyCells)
             {
-                listTabular.Add(new VinWalkTabular(
+                tabularList.Add(new VinWalkTabular(
                     cells[VinWalkTableItem.Vin.Value].Text,
-                    Int32.Parse(cells[VinWalkTableItem.Year.Value].Text)));
+                    int.Parse(cells[VinWalkTableItem.Year.Value].Text),
+                    cells[VinWalkTableItem.Make.Value].Text,
+                    cells[VinWalkTableItem.Model.Value].Text,
+                    cells[VinWalkTableItem.Trim.Value].Text,
+                    cells[VinWalkTableItem.Mmr.Value].Text,
+                    cells[VinWalkTableItem.Mileage.Value].Text,
+                    cells[VinWalkTableItem.Location.Value].Text,
+                    cells[VinWalkTableItem.Condition.Value].Text,
+                    cells[VinWalkTableItem.Color.Value].Text,
+                    cells[VinWalkTableItem.Content.Value].Text,
+                    cells[VinWalkTableItem.CarFax.Value].Text,
+                    cells[VinWalkTableItem.Structural.Value].Text,
+                    cells[VinWalkTableItem.TimesRun.Value].Text,
+                    cells[VinWalkTableItem.SalesChannel.Value].Text,
+                    cells[VinWalkTableItem.Misc.Value].Text,
+                    cells[VinWalkTableItem.Manual.Value].Text,
+                    cells[VinWalkTableItem.Floor.Value].Text,
+                    cells[VinWalkTableItem.Status.Value].Text,
+                    cells[VinWalkTableItem.SalePrice.Value].Text,
+                    cells[VinWalkTableItem.SoldDate.Value].Text,
+                    cells[VinWalkTableItem.PricingRule.Value].Text,
+                    cells[VinWalkTableItem.DatePriced.Value].Text));
             }
 
-            return listTabular;
+            return tabularList;
         }
 
         public void ClickExportCsv()

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
+using ToyotaSpec.Models;
 using ToyotaSpec.Pages;
 
 namespace ToyotaSpec
