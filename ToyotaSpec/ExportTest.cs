@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using TestFramework.Utils;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
@@ -34,8 +36,13 @@ namespace ToyotaSpec
             vinWalkPage.ClickExportCsv();
             var downloadedFile = DownloadUtil.WaitForDownload("vinwalk_*.csv", TimeSpan.FromSeconds(60)).First();
             var csvUtils = new CsvUtils(downloadedFile);
-            var tabular = csvUtils.GetListOf<VinWalkTabular>();
-            var vinWalkTabular = vinWalkPage.GetFullTabular();
+            var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
+            var uiTabular = vinWalkPage.GetFullTabular();
+            for (var index = 0; index < uiTabular.Count; index++)
+            {
+                Assert.IsTrue(uiTabular[index].Equals(csvTabular[index]),
+                    $"Car from UI row={index+1}, VIN={uiTabular[index].VIN} is not equal car from CSV row={index+1}, VIN={csvTabular[index].VIN}");
+            }
         }
 
     }

@@ -26,10 +26,10 @@ namespace ToyotaSpec.Enums
         public static readonly VinWalkTableItem Manual = new VinWalkTableItem(16, "Manual");
         public static readonly VinWalkTableItem Floor = new VinWalkTableItem(17, "Floor");
         public static readonly VinWalkTableItem Status = new VinWalkTableItem(18, "Status");
-        public static readonly VinWalkTableItem SalePrice = new VinWalkTableItem(18, "Sale Price");
-        public static readonly VinWalkTableItem SoldDate = new VinWalkTableItem(19, "Sold Date");
-        public static readonly VinWalkTableItem PricingRule = new VinWalkTableItem(20, "Pricing Rule");
-        public static readonly VinWalkTableItem DatePriced = new VinWalkTableItem(21, "Date Priced");
+        public static readonly VinWalkTableItem SalePrice = new VinWalkTableItem(19, "Sale Price");
+        public static readonly VinWalkTableItem SoldDate = new VinWalkTableItem(20, "Sold Date");
+        public static readonly VinWalkTableItem PricingRule = new VinWalkTableItem(21, "Pricing Rule");
+        public static readonly VinWalkTableItem DatePriced = new VinWalkTableItem(22, "Date Priced");
 
         private VinWalkTableItem(int value, String name)
         {
