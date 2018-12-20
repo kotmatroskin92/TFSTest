@@ -27,14 +27,14 @@ namespace ToyotaSpec
             AssertTabularSort(vinWalkTabular);
         }
 
-        private void AssertTabularSort(List<VINWalkTabular>  vinWalkTabular)
+        private void AssertTabularSort(List<VinWalkTabular>  vinWalkTabular)
         {
             for (var index = 1; index < vinWalkTabular.Count; index++)
             {
                 var firstCar = vinWalkTabular[index - 1];
                 var secondCar = vinWalkTabular[index];
-                Assert.IsTrue(firstCar.YEAR <= secondCar.YEAR,
-                    $"Car {firstCar.YEAR} year is more than {secondCar.YEAR} car");
+                Assert.IsTrue(firstCar.Year <= secondCar.Year,
+                    $"Car {firstCar.Year} year is more than {secondCar.Year} car");
             }
         }
     }

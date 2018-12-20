@@ -1,13 +1,11 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using TestFramework.Utils;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Objects;
 using ToyotaSpec.Pages;
+using ToyotaSpec.Utils;
 
 namespace ToyotaSpec
 {
@@ -34,6 +32,9 @@ namespace ToyotaSpec
             reportForm.ClickUpdate();
             vinWalkPage.ClickExportCsv();
             var downloadedFile = DownloadUtil.WaitForDownload("vinwalk_*.csv", TimeSpan.FromSeconds(60)).First();
+            var csvUtils = new CsvUtils(downloadedFile);
+            var tabular = csvUtils.GetListOf<VinWalkTabular>();
         }
+
     }
 }

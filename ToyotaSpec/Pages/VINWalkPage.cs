@@ -28,14 +28,14 @@ namespace ToyotaSpec.Pages
             }
         }
 
-        public List<VINWalkTabular> GetTabular()
+        public List<VinWalkTabular> GetTabular()
         {
-            List<VINWalkTabular> listTabular = new List<VINWalkTabular>(); 
+            List<VinWalkTabular> listTabular = new List<VinWalkTabular>(); 
             var table = new TableUtils(_tableTabular);
             var bodyCells = table.GetBodyCells();
             foreach (var cells in bodyCells)
             {
-                listTabular.Add(new VINWalkTabular(cells[VinWalkTableItem.VIN.Value].Text, Int32.Parse(cells[VinWalkTableItem.YEAR.Value].Text)));
+                listTabular.Add(new VinWalkTabular(cells[VinWalkTableItem.VIN.Value].Text, Int32.Parse(cells[VinWalkTableItem.YEAR.Value].Text)));
             }
 
             return listTabular;
