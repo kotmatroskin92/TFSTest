@@ -35,7 +35,9 @@ namespace ToyotaSpec.Pages
             var bodyCells = table.GetBodyCells();
             foreach (var cells in bodyCells)
             {
-                listTabular.Add(new VinWalkTabular(cells[VinWalkTableItem.VIN.Value].Text, Int32.Parse(cells[VinWalkTableItem.YEAR.Value].Text)));
+                listTabular.Add(new VinWalkTabular(
+                    cells[VinWalkTableItem.Vin.Value].Text,
+                    Int32.Parse(cells[VinWalkTableItem.Year.Value].Text)));
             }
 
             return listTabular;
