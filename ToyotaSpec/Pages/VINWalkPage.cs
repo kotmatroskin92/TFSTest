@@ -29,7 +29,7 @@ namespace ToyotaSpec.Pages
             }
         }
 
-        public List<VinWalkTabular> GetTabular()
+        public List<VinWalkTabular> GetFullTabular()
         {
             var tabularList = new List<VinWalkTabular>(); 
             var table = new TableUtils(_tableTabular);
@@ -60,6 +60,23 @@ namespace ToyotaSpec.Pages
                     cells[VinWalkTableItem.SoldDate.Value].Text,
                     cells[VinWalkTableItem.PricingRule.Value].Text,
                     cells[VinWalkTableItem.DatePriced.Value].Text));
+            }
+
+            return tabularList;
+        }
+
+        public List<VinWalkTabular> GetVinYearTabular()
+        {
+            var tabularList = new List<VinWalkTabular>();
+            var table = new TableUtils(_tableTabular);
+            var bodyCells = table.GetBodyCells();
+            foreach (var cells in bodyCells)
+            {
+                tabularList.Add(new VinWalkTabular
+                {
+                    VIN = cells[VinWalkTableItem.Vin.Value].Text,
+                    Year = int.Parse(cells[VinWalkTableItem.Year.Value].Text)
+                });
             }
 
             return tabularList;

@@ -24,7 +24,7 @@ namespace ToyotaSpec
             var reportForm = new ReportForm(ReportName.VIN_WALK);
             reportForm.ClickUpdate();
             vinWalkPage.SortTableBy(VinWalkTableItem.Year);
-            var vinWalkTabular = vinWalkPage.GetTabular();
+            var vinWalkTabular = vinWalkPage.GetVinYearTabular();
             AssertTabularSort(vinWalkTabular);
         }
 
