@@ -5,6 +5,7 @@ using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
 using ToyotaSpec.Pages;
+using ToyotaSpec.Steps;
 
 namespace ToyotaSpec
 {
@@ -16,20 +17,13 @@ namespace ToyotaSpec
         public void VinWalkTest()
         {
             Log.TestLog.Info("Step1: Login.");
-            var loginPage = new LoginPage();
-            loginPage.LogIn(TestData.Login, TestData.Password);
-            var homePage = new HomePage();
+            CommonSteps.Login(TestData.Login, TestData.Password);
             Log.TestLog.Info($"Step2: Navigate to Reports - VinWalk");
-            homePage.TopMenuForm.NavigateTo(TopMenuItem.Reports);
-            var reportsPage = new ReportsPage();
-            reportsPage.NavigateTo(ReportsFormItem.VinWalk);
-            var vinWalkPage = new VinWalkPage();
-            var reportForm = new ReportForm(ReportName.VinWalk);
-            reportForm.ClickUpdate();
-            Log.TestLog.Info($"Step4: Sort VinWalk tabular by Year");
+            var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
+            Log.TestLog.Info($"Step3: Sort VinWalk tabular by Year");
             vinWalkPage.SortTableBy(VinWalkTableItem.Year);
             var vinWalkTabular = vinWalkPage.GetVinYearTabular();
-            Log.TestLog.Info($"Step5: Assert tabular sorting");
+            Log.TestLog.Info($"Step4: Assert tabular sorting");
             AssertTabularSort(vinWalkTabular);
         }
 

@@ -13,10 +13,10 @@ namespace TestFramework.Objects
         private static readonly string _pathToConfig = PathUtils.GetAbsoluteFilePath($"Configuration\\config.json");
         protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
 
-        private readonly Log _log = new Log();
+        private static readonly Log _log = new Log();
         private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
 
-        public Log Log => _log ?? new Log();
+        public static Log Log => _log ?? new Log();
         public IWebDriver LazyDriver =>
             _driver.Value ?? (_driver.Value = WebDriverFactory.CreateWebDriver(Configuration, Log));
 

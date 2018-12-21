@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using TestFramework.Utils;
 using ToyotaSpec.Constants;
-using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
 using ToyotaSpec.Objects;
-using ToyotaSpec.Pages;
+using ToyotaSpec.Steps;
 using ToyotaSpec.Utils;
 
 namespace ToyotaSpec
@@ -25,40 +24,38 @@ namespace ToyotaSpec
         [TestMethod]
         public void ExportCsv()
         {
-            var loginPage = new LoginPage();
-            loginPage.LogIn(TestData.Login, TestData.Password);
-            var homePage = new HomePage();
-            homePage.TopMenuForm.NavigateTo(TopMenuItem.Reports);
-            var reportsPage = new ReportsPage();
-            reportsPage.NavigateTo(ReportsFormItem.VinWalk);
-            var vinWalkPage = new VinWalkPage();
-            var reportForm = new ReportForm(ReportName.VinWalk);
-            reportForm.ClickUpdate();
+            Log.TestLog.Info("Step1: Login.");
+            CommonSteps.Login(TestData.Login, TestData.Password);
+            Log.TestLog.Info($"Step2: Navigate to Reports - VinWalk");
+            var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
+            Log.TestLog.Info($"Step3: Export csv tabular");
             vinWalkPage.ClickExportCsv();
             var downloadedFile = DownloadUtil.WaitForDownload(FileNamePattern.VinWalkCsv).First();
             var csvUtils = new CsvUtils(downloadedFile);
+            Log.TestLog.Info($"Step4: Parse csv tabular");
             var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
+            Log.TestLog.Info($"Step5: Parse ui tabular");
             var uiTabular = vinWalkPage.GetFullTabular();
+            Log.TestLog.Info($"Step6: Assert tabular");
             AssertTabularEquals(uiTabular, csvTabular, "CSV");
         }
 
         [TestMethod]
         public void ExportExcel()
         {
-            var loginPage = new LoginPage();
-            loginPage.LogIn(TestData.Login, TestData.Password);
-            var homePage = new HomePage();
-            homePage.TopMenuForm.NavigateTo(TopMenuItem.Reports);
-            var reportsPage = new ReportsPage();
-            reportsPage.NavigateTo(ReportsFormItem.VinWalk);
-            var vinWalkPage = new VinWalkPage();
-            var reportForm = new ReportForm(ReportName.VinWalk);
-            reportForm.ClickUpdate();
+            Log.TestLog.Info("Step1: Login.");
+            CommonSteps.Login(TestData.Login, TestData.Password);
+            Log.TestLog.Info($"Step2: Navigate to Reports - VinWalk");
+            var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
+            Log.TestLog.Info($"Step3: Export csv tabular");
             vinWalkPage.ClickExportExcel();
             var downloadedFile = DownloadUtil.WaitForDownload(FileNamePattern.VinWalkXlsx).First();
+            Log.TestLog.Info($"Step4: Parse excel tabular");
             var excel = new ExcelUtils(downloadedFile);
             var excelTabular = excel.ExcelWorksheet().GetListOf<VinWalkTabular>(new Dictionary<string, string>{{"Misc.", "Misc"}});
+            Log.TestLog.Info($"Step5: Parse ui tabular");
             var uiTabular = vinWalkPage.GetFullTabular();
+            Log.TestLog.Info($"Step6: Assert tabular");
             AssertTabularEquals(uiTabular, excelTabular, "Excel");
         }
 
