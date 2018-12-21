@@ -10,7 +10,7 @@ namespace TestFramework.Objects
 {
     public class ApplicationBase
     {
-        private static readonly string _pathToConfig = PathUtils.GetAbsoluteFilePath($"Configuration\\config.json");
+        private static readonly string _pathToConfig = PathUtils.GetAbsoluteFilePath("Configuration\\config.json");
         protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
 
         private static readonly Log _log = new Log();

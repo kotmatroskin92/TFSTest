@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
-using System.Text;
 using OfficeOpenXml;
 
 namespace ToyotaSpec.Utils
 {
     public class ExcelUtils
     {
-        private ExcelPackage _excelPackage;
+        private readonly ExcelPackage _excelPackage;
 
         public ExcelUtils(string filePath)
         {
@@ -109,8 +108,7 @@ namespace ToyotaSpec.Utils
 
                         if (propertyType == typeof(int?) || propertyType == typeof(int))
                         {
-                            int val;
-                            if (!int.TryParse(valueStr, out val))
+                            if (!int.TryParse(valueStr, out var val))
                             {
                                 val = default(int);
                             }
@@ -119,29 +117,25 @@ namespace ToyotaSpec.Utils
                         }
                         else if (propertyType == typeof(short?) || propertyType == typeof(short))
                         {
-                            short val;
-                            if (!short.TryParse(valueStr, out val))
+                            if (!short.TryParse(valueStr, out var val))
                                 val = default(short);
                             parsedValue = val;
                         }
                         else if (propertyType == typeof(long?) || propertyType == typeof(long))
                         {
-                            long val;
-                            if (!long.TryParse(valueStr, out val))
+                            if (!long.TryParse(valueStr, out var val))
                                 val = default(long);
                             parsedValue = val;
                         }
                         else if (propertyType == typeof(decimal?) || propertyType == typeof(decimal))
                         {
-                            decimal val;
-                            if (!decimal.TryParse(valueStr, out val))
+                            if (!decimal.TryParse(valueStr, out var val))
                                 val = default(decimal);
                             parsedValue = val;
                         }
                         else if (propertyType == typeof(double?) || propertyType == typeof(double))
                         {
-                            double val;
-                            if (!double.TryParse(valueStr, out val))
+                            if (!double.TryParse(valueStr, out var val))
                                 val = default(double);
                             parsedValue = val;
                         }
@@ -182,6 +176,7 @@ namespace ToyotaSpec.Utils
                         }
                         catch (Exception ex)
                         {
+                            throw new ArgumentException(ex.Message);
                             // Indicate parsing error on row?
                         }
                     }
@@ -193,7 +188,7 @@ namespace ToyotaSpec.Utils
             return retList;
         }
 
-        class ExcelMap
+        private class ExcelMap
         {
             public string Name { get; set; }
             public string MappedTo { get; set; }

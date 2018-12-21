@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework.Utils;
-using ToyotaSpec.Objects;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
-using ToyotaSpec.Pages;
+using ToyotaSpec.Objects;
 using ToyotaSpec.Steps;
 
-namespace ToyotaSpec
+namespace ToyotaSpec.Tests
 {
     [TestClass]
     public class TfsTest : BaseTest
@@ -18,12 +17,12 @@ namespace ToyotaSpec
         {
             Log.TestLog.Info("Step1: Login.");
             CommonSteps.Login(TestData.Login, TestData.Password);
-            Log.TestLog.Info($"Step2: Navigate to Reports - VinWalk");
+            Log.TestLog.Info("Step2: Navigate to Reports - VinWalk");
             var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
-            Log.TestLog.Info($"Step3: Sort VinWalk tabular by Year");
+            Log.TestLog.Info("Step3: Sort VinWalk tabular by Year");
             vinWalkPage.SortTableBy(VinWalkTableItem.Year);
             var vinWalkTabular = vinWalkPage.GetVinYearTabular();
-            Log.TestLog.Info($"Step4: Assert tabular sorting");
+            Log.TestLog.Info("Step4: Assert tabular sorting");
             AssertTabularSort(vinWalkTabular);
         }
 

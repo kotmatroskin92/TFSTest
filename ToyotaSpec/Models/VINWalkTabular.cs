@@ -38,8 +38,8 @@ namespace ToyotaSpec.Models
         public string DatePriced { get; set; }
         protected object this[string propertyName]
         {
-            get => this.GetType().GetProperty(propertyName).GetValue(this, null);
-            set => this.GetType().GetProperty(propertyName).SetValue(this, value, null);
+            get => GetType().GetProperty(propertyName).GetValue(this, null);
+            set => GetType().GetProperty(propertyName).SetValue(this, value, null);
         }
 
         public VinWalkTabular(string vin, int year, string make, string model, string trim, string mmr, string mileage, string location, string condition, string color, string content, string carFax, string structural, string timesRun, string salesChannel, string misc, string manual, string floor, string status, string salePrice, string soldDate, string pricingRule, string datePriced)

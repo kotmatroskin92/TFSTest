@@ -14,7 +14,7 @@ namespace ToyotaSpec.Objects
         [AssemblyInitialize]
         public static void AssemblyInitialize(TestContext context)
         {
-            var pathToTestData = PathUtils.GetAbsoluteFilePath($"Configuration\\testData.json");
+            var pathToTestData = PathUtils.GetAbsoluteFilePath("Configuration\\testData.json");
             TestData = TestData.ParseJson<TestData>(File.ReadAllText(pathToTestData));
         }
 
