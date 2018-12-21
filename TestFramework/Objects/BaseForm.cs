@@ -8,7 +8,7 @@ namespace TestFramework.Objects
         protected BaseForm(By targetElementlocator, string formName)
         {
             Assert.IsTrue(IsPresent(targetElementlocator), "Element is not present");
-            Log.Console.Info(formName + " was opened");
+            Log.TestLog.Info(formName + " was opened");
         }
     }
 }
