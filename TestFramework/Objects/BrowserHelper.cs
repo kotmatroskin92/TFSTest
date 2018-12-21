@@ -20,16 +20,6 @@ namespace TestFramework.Objects
             NavigateTo(webDriver, newUrl);
         }
 
-        public static void QuitWebDriver(this IWebDriver webDriver)
-        {
-            if (webDriver != null)
-            {
-                Log.TestLog.Info("Quit browser");
-                webDriver.Quit();
-                webDriver.Dispose();
-            }
-        }
-
         public static Screenshot TakeScreenshot(this IWebDriver driver)
         {
             return ((ITakesScreenshot)driver).GetScreenshot();

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ToyotaSpec.Constants
+﻿namespace ToyotaSpec.Constants
 {
     static class FileNamePattern
     {

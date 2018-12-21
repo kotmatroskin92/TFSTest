@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using TestFramework.Utils;
@@ -15,6 +14,8 @@ namespace ToyotaSpec
     [TestClass]
     public class ExportTest : BaseTest
     {
+        private readonly SoftAssertions _softAssertions = new SoftAssertions();
+
         [ClassInitialize]
         public static void InitBeforeClass(TestContext context)
         {
@@ -24,7 +25,6 @@ namespace ToyotaSpec
         [TestMethod]
         public void ExportCsv()
         {
-            var softAssertions = new SoftAssertions();
             var loginPage = new LoginPage();
             loginPage.LogIn(TestData.Login, TestData.Password);
             var homePage = new HomePage();
@@ -39,17 +39,12 @@ namespace ToyotaSpec
             var csvUtils = new CsvUtils(downloadedFile);
             var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
             var uiTabular = vinWalkPage.GetFullTabular();
-            for (var index = 0; index < uiTabular.Count; index++)
-            {
-                softAssertions.IsTrue(uiTabular[index].Equals(csvTabular[index]), $"Car from UI row={index+1}, VIN={uiTabular[index].VIN} is not equal car from CSV row={index+1}, VIN={csvTabular[index].VIN}");
-            }
-            softAssertions.AssertAll();
+            AssertTabularEquals(uiTabular, csvTabular, "CSV");
         }
 
         [TestMethod]
         public void ExportExcel()
         {
-            var softAssertions = new SoftAssertions();
             var loginPage = new LoginPage();
             loginPage.LogIn(TestData.Login, TestData.Password);
             var homePage = new HomePage();
@@ -64,11 +59,17 @@ namespace ToyotaSpec
             var excel = new ExcelUtils(downloadedFile);
             var excelTabular = excel.ExcelWorksheet().GetListOf<VinWalkTabular>(new Dictionary<string, string>{{"Misc.", "Misc"}});
             var uiTabular = vinWalkPage.GetFullTabular();
+            AssertTabularEquals(uiTabular, excelTabular, "Excel");
+        }
+
+        private void AssertTabularEquals(List<VinWalkTabular> uiTabular, List<VinWalkTabular> fileTabular, string fileType)
+        {
             for (var index = 0; index < uiTabular.Count; index++)
             {
-                softAssertions.IsTrue(uiTabular[index].Equals(excelTabular[index]), $"Car from UI row={index + 1}, VIN={uiTabular[index].VIN} is not equal car from Excel row={index + 1}, VIN={excelTabular[index].VIN}");
+                _softAssertions.IsTrue(uiTabular[index].Equals(fileTabular[index]), $"Car from UI row={index + 1}, VIN={uiTabular[index].VIN} is not equal car from {fileType} row={index + 1}, VIN={fileTabular[index].VIN}");
             }
-            softAssertions.AssertAll();
+            _softAssertions.AssertAll();
         }
+
     }
 }

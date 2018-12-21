@@ -33,5 +33,16 @@ namespace TestFramework.Objects
             var path = Path.Combine(directory, $"_{DateTime.Now:yyyyMMddHHmmss}.png");
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
         }
+
+        public void QuitWebDriver()
+        {
+            if (_driver.Value != null)
+            {
+                Log.TestLog.Info("Quit browser");
+                _driver.Value.Quit();
+                _driver.Value.Dispose();
+                _driver.Value = null;
+            }
+        }
     }
 }

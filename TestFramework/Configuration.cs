@@ -19,7 +19,7 @@ namespace TestFramework
         [DefaultValue(typeof(TimeSpan), "00:01:00")]
         public TimeSpan DefaultWaitTimeout { get; set; }
 
-        [DefaultValue(typeof(TimeSpan), "00:01:00")]
+        [DefaultValue(typeof(TimeSpan), "00:01:10")]
         public TimeSpan DefaultDownloadTimeout { get; set; }
 
         [JsonProperty("browser.name")]

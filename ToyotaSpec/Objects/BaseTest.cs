@@ -1,6 +1,5 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestFramework;
 using TestFramework.Objects;
 using TestFramework.Utils;
 
@@ -32,7 +31,7 @@ namespace ToyotaSpec.Objects
             {
                 PublishScreenshot(Configuration);
             }
-            LazyDriver.QuitWebDriver();
+            QuitWebDriver();
         }
     }
 }
