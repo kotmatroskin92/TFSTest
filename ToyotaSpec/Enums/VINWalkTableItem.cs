@@ -5,8 +5,6 @@ namespace ToyotaSpec.Enums
     public sealed class VinWalkTableItem
     {
         private readonly String _name;
-        public int Value { get; }
-
         public static readonly VinWalkTableItem Vin = new VinWalkTableItem(0, "VIN");
         public static readonly VinWalkTableItem Year = new VinWalkTableItem(1, "Year");
         public static readonly VinWalkTableItem Make = new VinWalkTableItem(2, "Make");
@@ -30,6 +28,9 @@ namespace ToyotaSpec.Enums
         public static readonly VinWalkTableItem SoldDate = new VinWalkTableItem(20, "Sold Date");
         public static readonly VinWalkTableItem PricingRule = new VinWalkTableItem(21, "Pricing Rule");
         public static readonly VinWalkTableItem DatePriced = new VinWalkTableItem(22, "Date Priced");
+
+        public int Value { get; }
+
 
         private VinWalkTableItem(int value, String name)
         {

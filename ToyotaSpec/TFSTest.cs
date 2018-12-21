@@ -17,11 +17,11 @@ namespace ToyotaSpec
             var loginPage = new LoginPage();
             loginPage.LogIn(TestData.Login, TestData.Password);
             var homePage = new HomePage();
-            homePage.TopMenuForm.NavigateTo(TopMenuItem.REPORTS);
+            homePage.TopMenuForm.NavigateTo(TopMenuItem.Reports);
             var reportsPage = new ReportsPage();
-            reportsPage.NavigateTo(ReportsFormItem.VIN_WALK);
+            reportsPage.NavigateTo(ReportsFormItem.VinWalk);
             var vinWalkPage = new VinWalkPage();
-            var reportForm = new ReportForm(ReportName.VIN_WALK);
+            var reportForm = new ReportForm(ReportName.VinWalk);
             reportForm.ClickUpdate();
             vinWalkPage.SortTableBy(VinWalkTableItem.Year);
             var vinWalkTabular = vinWalkPage.GetVinYearTabular();

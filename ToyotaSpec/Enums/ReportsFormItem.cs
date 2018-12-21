@@ -5,8 +5,7 @@ namespace ToyotaSpec.Enums
     public sealed class ReportsFormItem
     {
         private readonly String _name;
-
-        public static readonly ReportsFormItem VIN_WALK = new ReportsFormItem("vinwalk");
+        public static readonly ReportsFormItem VinWalk = new ReportsFormItem("vinwalk");
 
         private ReportsFormItem(String name)
         {
