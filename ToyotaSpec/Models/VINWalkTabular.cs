@@ -73,12 +73,20 @@ namespace ToyotaSpec.Models
         {
         }
 
-        public bool Equals(VinWalkTabular obj)
+        public bool Equals(VinWalkTabular tabular)
         {
             foreach (var name in _propertyNames)
             {
-                //var isNull = this[name] is null && obj[name] is null;
-                if (!this[name].ToString().Contains(obj[name].ToString()))
+                if (this[name] is null)
+                {
+                    this[name] = "null";
+                }
+                if (tabular[name] is null)
+                {
+                    tabular[name] = "null";
+                }
+                tabular[name] = tabular[name] ?? "null";
+                if (!this[name].ToString().Contains(tabular[name].ToString()))
                 {
                     return false;
                 }

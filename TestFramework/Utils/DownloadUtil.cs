@@ -36,6 +36,11 @@ namespace TestFramework.Utils
             });
         }
 
+        public static string[] WaitForDownload(string fileNamePattern)
+        {
+            return WaitForDownload(fileNamePattern, Configuration.DefaultWaitTimeout);
+        }
+
         public static string[] WaitForDownload(string fileNamePattern, TimeSpan waitTime)
         {
             const int sleepTime = 200;

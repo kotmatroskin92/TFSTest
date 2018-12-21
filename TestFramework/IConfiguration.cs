@@ -21,5 +21,7 @@ namespace TestFramework
         string ScreenshotFolder { get; set; }
 
         string DownloadsFolder { get; set; }
+
+        TimeSpan DefaultDownloadTimeout { get; set; }
     }
 }

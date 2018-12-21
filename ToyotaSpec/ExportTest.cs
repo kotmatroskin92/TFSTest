@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using TestFramework.Utils;
+using ToyotaSpec.Constants;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
 using ToyotaSpec.Objects;
@@ -24,6 +23,7 @@ namespace ToyotaSpec
         [TestMethod]
         public void VinWalkTest()
         {
+            var softAssertions = new SoftAssertions();
             var loginPage = new LoginPage();
             loginPage.LogIn(TestData.Login, TestData.Password);
             var homePage = new HomePage();
@@ -34,15 +34,15 @@ namespace ToyotaSpec
             var reportForm = new ReportForm(ReportName.VIN_WALK);
             reportForm.ClickUpdate();
             vinWalkPage.ClickExportCsv();
-            var downloadedFile = DownloadUtil.WaitForDownload("vinwalk_*.csv", TimeSpan.FromSeconds(60)).First();
+            var downloadedFile = DownloadUtil.WaitForDownload(FileNamePattern.VinWalkCsv).First();
             var csvUtils = new CsvUtils(downloadedFile);
             var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
             var uiTabular = vinWalkPage.GetFullTabular();
             for (var index = 0; index < uiTabular.Count; index++)
             {
-                Assert.IsTrue(uiTabular[index].Equals(csvTabular[index]),
-                    $"Car from UI row={index+1}, VIN={uiTabular[index].VIN} is not equal car from CSV row={index+1}, VIN={csvTabular[index].VIN}");
+                softAssertions.IsTrue(uiTabular[index].Equals(csvTabular[index]), $"Car from UI row={index+1}, VIN={uiTabular[index].VIN} is not equal car from CSV row={index+1}, VIN={csvTabular[index].VIN}");
             }
+            softAssertions.AssertAll();
         }
 
     }
