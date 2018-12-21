@@ -30,6 +30,7 @@ namespace ToyotaSpec.Objects
             if (TestContext.CurrentTestOutcome != UnitTestOutcome.Passed)
             {
                 PublishScreenshot(Configuration);
+                Log.TestLog.Fatal("Test failed");
             }
             QuitWebDriver();
         }

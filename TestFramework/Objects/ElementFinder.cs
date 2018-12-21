@@ -58,6 +58,7 @@ namespace TestFramework.Objects
         {
             try
                 {
+                    Log.TestLog.Info($"Wait element: {targetElementlocator}");
                     return new WebDriverWait(Driver, Configuration.DefaultWaitTimeout).Until(ExpectedConditions.ElementIsVisible(targetElementlocator));
                 }
                 catch (WebDriverTimeoutException)
