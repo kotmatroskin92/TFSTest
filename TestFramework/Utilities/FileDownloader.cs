@@ -2,11 +2,10 @@
 using System.IO;
 using System.Linq;
 using System.Threading;
-using TestFramework.Objects;
 
-namespace TestFramework.Utils
+namespace TestFramework.Utilities
 {
-    public class DownloadUtil : ApplicationBase
+    public class FileDownloader : ApplicationBase
     {
         private static readonly string[] _tempFileParts = { "part", "crdownload" };
         private static readonly string _directory = Configuration.DownloadsFolder;

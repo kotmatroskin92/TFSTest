@@ -4,13 +4,15 @@ using System.Text;
 using System.Threading;
 using OpenQA.Selenium;
 using TestFramework.Logging;
+using TestFramework.Utilities;
 using TestFramework.Utils;
+using TestFramework.WebDriver;
 
-namespace TestFramework.Objects
+namespace TestFramework
 {
     public class ApplicationBase
     {
-        private static readonly string _pathToConfig = PathUtils.GetAbsoluteFilePath("Configuration\\config.json");
+        private static readonly string _pathToConfig = PathUtility.GetAbsoluteFilePath("Configuration\\config.json");
         protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
 
         private static readonly Log _log = new Log();
@@ -28,8 +30,8 @@ namespace TestFramework.Objects
         public void PublishScreenshot(IConfiguration configuration)
         {
             var screenshot = LazyDriver.TakeScreenshot();
-            var directory = PathUtils.BuildAbsolutePath(configuration.ScreenshotFolder);
-            PathUtils.EnsureDirectoryExists(directory);
+            var directory = PathUtility.BuildAbsolutePath(configuration.ScreenshotFolder);
+            PathUtility.EnsureDirectoryExists(directory);
             var path = Path.Combine(directory, $"_{DateTime.Now:yyyyMMddHHmmss}.png");
             screenshot.SaveAsFile(path, ScreenshotImageFormat.Png);
         }

@@ -2,9 +2,9 @@
 using OpenQA.Selenium;
 using TestFramework.Logging;
 
-namespace TestFramework.Objects
+namespace TestFramework.WebDriver
 {
-    public static class BrowserHelper
+    public static class BrowserExtensions
     {
 
         public static Log Log = new Log();

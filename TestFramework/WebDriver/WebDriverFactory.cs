@@ -6,9 +6,10 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using TestFramework.Logging;
-using TestFramework.Utils;
+using TestFramework.Utilities;
+using TestFramework.WebDriver.enums;
 
-namespace TestFramework
+namespace TestFramework.WebDriver
 {
     class WebDriverFactory
     {
@@ -81,7 +82,7 @@ namespace TestFramework
             }
             chromeOptions.AddArgument("--disable-popup-blocking");
             chromeOptions.AddUserProfilePreference("download.prompt_for_download", "false");
-            chromeOptions.AddUserProfilePreference("download.default_directory", PathUtils.BuildAbsolutePath(configuration.DownloadsFolder));
+            chromeOptions.AddUserProfilePreference("download.default_directory", PathUtility.BuildAbsolutePath(configuration.DownloadsFolder));
 
             return chromeOptions;
         }
@@ -89,7 +90,7 @@ namespace TestFramework
         private static FirefoxOptions GetFirefoxOptions(IConfiguration configuration)
         {
             var firefoxProfile = new FirefoxProfile {AcceptUntrustedCertificates = true};
-            firefoxProfile.SetPreference("browser.download.dir", PathUtils.BuildAbsolutePath(configuration.DownloadsFolder));
+            firefoxProfile.SetPreference("browser.download.dir", PathUtility.BuildAbsolutePath(configuration.DownloadsFolder));
             firefoxProfile.SetPreference("browser.download.folderList", 2);
             firefoxProfile.SetPreference("browser.download.useDownloadDir", true);
             firefoxProfile.SetPreference("browser.helperApps.neverAsk.saveToDisk", "text/csv;application/vnd.ms-excel;application/vnd.ms-excel.addin.macroenabled.12;application/vnd.ms-excelsheet.binary.macroenabled.12;application/vnd.ms-excel.template.macroenabled.12;application/vnd.ms-excel.sheet.macroenabled.12;application/");

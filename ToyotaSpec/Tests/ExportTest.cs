@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestFramework.Utilities;
 using TestFramework.Utils;
 using ToyotaSpec.Constants;
 using ToyotaSpec.Models;
@@ -18,7 +19,7 @@ namespace ToyotaSpec.Tests
         [ClassInitialize]
         public static void InitBeforeClass(TestContext context)
         {
-            DownloadUtil.ClearDir();
+            FileDownloader.ClearDir();
         }
 
         [TestMethod]
@@ -30,7 +31,7 @@ namespace ToyotaSpec.Tests
             var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
             Log.TestLog.Info("Step3: Export csv tabular");
             vinWalkPage.ClickExportCsv();
-            var downloadedFile = DownloadUtil.WaitForDownload(FileNamePattern.VinWalkCsv).First();
+            var downloadedFile = FileDownloader.WaitForDownload(FileNamePattern.VinWalkCsv).First();
             var csvUtils = new CsvUtils(downloadedFile);
             Log.TestLog.Info("Step4: Parse csv tabular");
             var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
@@ -49,7 +50,7 @@ namespace ToyotaSpec.Tests
             var vinWalkPage = CommonSteps.NavigateToVinWalkPage();
             Log.TestLog.Info("Step3: Export csv tabular");
             vinWalkPage.ClickExportExcel();
-            var downloadedFile = DownloadUtil.WaitForDownload(FileNamePattern.VinWalkXlsx).First();
+            var downloadedFile = FileDownloader.WaitForDownload(FileNamePattern.VinWalkXlsx).First();
             Log.TestLog.Info("Step4: Parse excel tabular");
             var excel = new ExcelUtils(downloadedFile);
             var excelTabular = excel.ExcelWorksheet().GetListOf<VinWalkTabular>(new Dictionary<string, string>{{"Misc.", "Misc"}});

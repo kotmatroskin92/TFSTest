@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace TestFramework.Utils
+namespace TestFramework.Utilities
 {
-    public static class PathUtils
+    public static class PathUtility
     {
 
         private static readonly Dictionary<string, Func<string>> pathHandlers = new Dictionary<string, Func<string>>

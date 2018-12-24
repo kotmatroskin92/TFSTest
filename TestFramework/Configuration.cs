@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using Newtonsoft.Json;
+using TestFramework.WebDriver.enums;
 
 namespace TestFramework
 {

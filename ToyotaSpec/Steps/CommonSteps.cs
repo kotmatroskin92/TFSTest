@@ -1,4 +1,4 @@
-﻿using TestFramework.Objects;
+﻿using TestFramework;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Pages;
 

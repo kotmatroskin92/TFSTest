@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using TestFramework.Objects;
+using TestFramework.Elements;
 
 namespace ToyotaSpec.Utils
 {

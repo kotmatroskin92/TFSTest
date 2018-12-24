@@ -1,7 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using TestFramework.Elements;
 
-namespace TestFramework.Objects
+namespace TestFramework.Forms
 {
     public class BaseForm : ElementFinder
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using OpenQA.Selenium;
-using TestFramework.Objects;
+using TestFramework;
+using TestFramework.Forms;
 using ToyotaSpec.Enums;
 
 namespace ToyotaSpec.Pages

@@ -1,4 +1,4 @@
-﻿namespace TestFramework
+﻿namespace TestFramework.WebDriver.enums
 {
     public enum Browser
     {

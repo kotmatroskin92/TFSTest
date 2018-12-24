@@ -1,4 +1,5 @@
 ﻿using System;
+using TestFramework.WebDriver.enums;
 
 namespace TestFramework
 {

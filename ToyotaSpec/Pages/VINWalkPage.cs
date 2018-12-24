@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using TestFramework.Objects;
+using TestFramework;
+using TestFramework.Forms;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
 using ToyotaSpec.Utils;

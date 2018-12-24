@@ -6,7 +6,7 @@ using Microsoft.Practices.TransientFaultHandling;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace TestFramework.Objects
+namespace TestFramework.Elements
 {
     public abstract class ElementFinder : ApplicationBase, ITransientErrorDetectionStrategy
     {
