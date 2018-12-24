@@ -38,7 +38,7 @@ namespace TestFramework
         [DefaultValue("C:\\Autotest\\downloads")]
         public string DownloadsFolder { get; set; }
 
-        [DefaultValue("{currentDir}\\")]
+        [DefaultValue("{currentDir}")]
         public string WebDriverFolder { get; set; }
 
         public static T ParseConfiguration<T>(string jsonText) where T : IConfiguration
