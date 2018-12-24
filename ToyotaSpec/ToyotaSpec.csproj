@@ -30,4 +30,13 @@
     <ProjectReference Include="..\TestFramework\TestFramework.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Configuration\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Configuration\testData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

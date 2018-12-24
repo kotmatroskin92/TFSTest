@@ -1,7 +1,6 @@
 ﻿using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework;
-using TestFramework.Utilities;
 using TestFramework.WebDriver;
 using ToyotaSpec.Objects;
 
@@ -17,8 +16,7 @@ namespace ToyotaSpec
         public static void AssemblyInitialize(TestContext context)
         {
             const string testDataDir = @"Configuration\testData.json";
-            var pathToTestData = PathUtility.GetAbsoluteFilePath(testDataDir);
-            TestData = TestData.ParseJson<TestData>(File.ReadAllText(pathToTestData));
+            TestData = TestData.ParseJson<TestData>(File.ReadAllText(Path.GetFullPath(testDataDir)));
         }
 
         [TestInitialize]
