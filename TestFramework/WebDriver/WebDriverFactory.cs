@@ -11,17 +11,15 @@ using TestFramework.WebDriver.enums;
 
 namespace TestFramework.WebDriver
 {
-    class WebDriverFactory
+    internal class WebDriverFactory
     {
-
-        private static readonly ThreadLocal<IWebDriver> _threadDriver = new ThreadLocal<IWebDriver>();
 
         public static IWebDriver CreateWebDriver(IConfiguration configuration, Log log)
         {
+            var threadDriver = new ThreadLocal<IWebDriver>();
             log.TestLog.Trace("Choosed browser from config: " + configuration.Browser);
             var driver = ResolveLocalDriver(configuration);
-
-            _threadDriver.Value = driver;
+            threadDriver.Value = driver;
 
             if (configuration.MaximizeWindow)
             {
@@ -35,26 +33,27 @@ namespace TestFramework.WebDriver
                     configuration.WindowHeight.GetValueOrDefault(size.Height));
             }
 
-            return _threadDriver.Value;
+            return threadDriver.Value;
         }
 
         public static IWebDriver CreateFirefoxDriver(IConfiguration configuration)
         {
             var firefoxOptions = GetFirefoxOptions(configuration);
 
-            return new FirefoxDriver("./", firefoxOptions);
+            return new FirefoxDriver(PathUtility.BuildAbsolutePath(configuration.WebDriverFolder), firefoxOptions);
         }
 
         public static IWebDriver CreateChromeDriver(IConfiguration configuration)
         {
             var chromeOptions = GetChromeOptions(configuration);
 
-            return new ChromeDriver("./", chromeOptions);
+            return new ChromeDriver(PathUtility.BuildAbsolutePath(configuration.WebDriverFolder), chromeOptions);
         }
 
         private static IWebDriver ResolveLocalDriver(IConfiguration configuration)
         {
             IWebDriver driver;
+
             switch (configuration.Browser)
             {
                 case Browser.Firefox:

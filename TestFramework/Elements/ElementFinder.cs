@@ -36,11 +36,12 @@ namespace TestFramework.Elements
                 return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
                     FindChildren(parentElementLocator, targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
             }
+
             return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
                 Driver.FindElements(targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
         }
 
-        protected bool IsPresent (By targetElementLocator)
+        protected bool IsVisible (By targetElementLocator)
         {
             try
             {

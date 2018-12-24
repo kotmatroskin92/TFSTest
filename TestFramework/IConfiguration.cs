@@ -24,5 +24,7 @@ namespace TestFramework
         string DownloadsFolder { get; set; }
 
         TimeSpan DefaultDownloadTimeout { get; set; }
+
+        String WebDriverFolder { get; set; }
     }
 }
