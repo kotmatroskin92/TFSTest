@@ -19,9 +19,9 @@ namespace TestFramework.Elements
             return ex is StaleElementReferenceException;
         }
 
-        protected IWebElement WaitForElement(By targetElementlocator)
+        protected IWebElement WaitForElement(By targetElementLocator)
         {
-            return InternalFinder(targetElementlocator);
+            return InternalFinder(targetElementLocator);
         }
 
         protected IReadOnlyCollection<IWebElement> FindChildren(By parentLocator, By childLocator)
@@ -29,22 +29,22 @@ namespace TestFramework.Elements
             return WaitForElement(parentLocator).FindElements(childLocator);
         }
 
-        protected ReadOnlyCollection<IWebElement> FindElements(By targetElementlocator, By parentElementLocator = null)
+        protected ReadOnlyCollection<IWebElement> FindElements(By targetElementLocator, By parentElementLocator = null)
         {
             if (parentElementLocator != null)
             {
                 return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
-                    FindChildren(parentElementLocator, targetElementlocator).Where(el => el.Displayed && el.Enabled).ToList()));
+                    FindChildren(parentElementLocator, targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
             }
             return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
-                Driver.FindElements(targetElementlocator).Where(el => el.Displayed && el.Enabled).ToList()));
+                Driver.FindElements(targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
         }
 
-        protected bool IsPresent (By targetElementlocator)
+        protected bool IsPresent (By targetElementLocator)
         {
             try
             {
-                InternalFinder(targetElementlocator);
+                InternalFinder(targetElementLocator);
 
                 return true;
             }
@@ -54,16 +54,17 @@ namespace TestFramework.Elements
             }
         }
 
-            protected IWebElement InternalFinder (By targetElementlocator)
+            protected IWebElement InternalFinder (By targetElementLocator)
         {
             try
                 {
-                    Log.TestLog.Info($"Wait element: {targetElementlocator}");
-                    return new WebDriverWait(Driver, Configuration.DefaultWaitTimeout).Until(ExpectedConditions.ElementIsVisible(targetElementlocator));
+                    Log.TestLog.Info($"Wait element: {targetElementLocator}");
+                    return new WebDriverWait(Driver, Configuration.DefaultWaitTimeout)
+                        .Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(targetElementLocator));
                 }
                 catch (WebDriverTimeoutException)
                 {
-                    throw new Exception($"WebDriverTimeoutException: Element {targetElementlocator} was not found for {Configuration.DefaultWaitTimeout}");
+                    throw new Exception($"WebDriverTimeoutException: Element {targetElementLocator} was not found for {Configuration.DefaultWaitTimeout}");
                 }
         }
     }

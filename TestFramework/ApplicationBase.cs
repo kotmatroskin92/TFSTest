@@ -5,18 +5,18 @@ using System.Threading;
 using OpenQA.Selenium;
 using TestFramework.Logging;
 using TestFramework.Utilities;
-using TestFramework.Utils;
 using TestFramework.WebDriver;
 
 namespace TestFramework
 {
     public class ApplicationBase
     {
-        private static readonly string _pathToConfig = PathUtility.GetAbsoluteFilePath("Configuration\\config.json");
-        protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
-
+        private const string _configurationDir = @"Configuration\config.json";
+        private static readonly string _pathToConfig = PathUtility.GetAbsoluteFilePath(_configurationDir);
         private static readonly Log _log = new Log();
         private static readonly ThreadLocal<IWebDriver> _driver = new ThreadLocal<IWebDriver>();
+
+        protected static Configuration Configuration = Configuration.ParseConfiguration<Configuration>(File.ReadAllText(_pathToConfig));
 
         public static Log Log => _log ?? new Log();
         public IWebDriver LazyDriver =>
