@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using TestFramework.Elements;
 
-namespace ToyotaSpec.Utils
+namespace ToyotaSpec.Utilities
 {
-    public class TableUtils: ElementFinder
+    public class TableUtilities: ElementFinder
     {
         private readonly By _tableElementLocator;
         private readonly By _headerRows = By.XPath(".//tr[position()=1]//th");
         private readonly By _dataRowsLocator = By.XPath(".//tr[td]");
 
-        public TableUtils(By tableElementLocator)
+        public TableUtilities(By tableElementLocator)
         {
             WaitForElement(tableElementLocator);
             _tableElementLocator = tableElementLocator;
@@ -20,6 +20,7 @@ namespace ToyotaSpec.Utils
         public int GetIndexByText(By targetElementLocator, string text)
         {
             var elements = FindElements(targetElementLocator, _tableElementLocator);
+
             for (int index=0;  index < elements.Count; index++)
             {
                 if (elements[index].Text == text)
@@ -45,6 +46,7 @@ namespace ToyotaSpec.Utils
         {
             var bodyElements = new List<ReadOnlyCollection<IWebElement>>();
             var elements = GetBodyElements();
+
             foreach(var element in elements)
             {
                 bodyElements.Add(element.FindElements(By.TagName("td"))); 

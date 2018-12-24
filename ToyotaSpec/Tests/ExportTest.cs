@@ -2,12 +2,10 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework.Utilities;
-using TestFramework.Utils;
 using ToyotaSpec.Constants;
 using ToyotaSpec.Models;
-using ToyotaSpec.Objects;
 using ToyotaSpec.Steps;
-using ToyotaSpec.Utils;
+using ToyotaSpec.Utilities;
 
 namespace ToyotaSpec.Tests
 {
@@ -32,7 +30,7 @@ namespace ToyotaSpec.Tests
             Log.TestLog.Info("Step3: Export csv tabular");
             vinWalkPage.ClickExportCsv();
             var downloadedFile = FileDownloader.WaitForDownload(FileNamePattern.VinWalkCsv).First();
-            var csvUtils = new CsvUtils(downloadedFile);
+            var csvUtils = new CsvUtilities(downloadedFile);
             Log.TestLog.Info("Step4: Parse csv tabular");
             var csvTabular = csvUtils.GetListOf<VinWalkTabular>();
             Log.TestLog.Info("Step5: Parse ui tabular");
@@ -52,7 +50,7 @@ namespace ToyotaSpec.Tests
             vinWalkPage.ClickExportExcel();
             var downloadedFile = FileDownloader.WaitForDownload(FileNamePattern.VinWalkXlsx).First();
             Log.TestLog.Info("Step4: Parse excel tabular");
-            var excel = new ExcelUtils(downloadedFile);
+            var excel = new ExcelUtilities(downloadedFile);
             var excelTabular = excel.ExcelWorksheet().GetListOf<VinWalkTabular>(new Dictionary<string, string>{{"Misc.", "Misc"}});
             Log.TestLog.Info("Step5: Parse ui tabular");
             var uiTabular = vinWalkPage.GetFullTabular();

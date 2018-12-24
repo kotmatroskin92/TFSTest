@@ -1,6 +1,7 @@
 ﻿using TestFramework;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Pages;
+using ToyotaSpec.Pages.forms;
 
 namespace ToyotaSpec.Steps
 {
@@ -23,6 +24,7 @@ namespace ToyotaSpec.Steps
             var vinWalkPage = new VinWalkPage();
             var reportForm = new ReportForm(ReportName.VinWalk);
             reportForm.ClickUpdate();
+
             return vinWalkPage;
         }
     }

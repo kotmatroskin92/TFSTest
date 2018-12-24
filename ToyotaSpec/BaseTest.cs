@@ -3,8 +3,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TestFramework;
 using TestFramework.Utilities;
 using TestFramework.WebDriver;
+using ToyotaSpec.Objects;
 
-namespace ToyotaSpec.Objects
+namespace ToyotaSpec
 {
     [TestClass]
     public abstract class BaseTest: ApplicationBase

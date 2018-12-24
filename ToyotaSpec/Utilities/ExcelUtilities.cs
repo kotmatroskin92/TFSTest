@@ -5,13 +5,13 @@ using System.IO;
 using System.Linq;
 using OfficeOpenXml;
 
-namespace ToyotaSpec.Utils
+namespace ToyotaSpec.Utilities
 {
-    public class ExcelUtils
+    public class ExcelUtilities
     {
         private readonly ExcelPackage _excelPackage;
 
-        public ExcelUtils(string filePath)
+        public ExcelUtilities(string filePath)
         {
             _excelPackage = new ExcelPackage(new FileInfo(filePath));
         }
@@ -33,14 +33,22 @@ namespace ToyotaSpec.Utils
             var convertDateTime = new Func<double, DateTime>(excelDate =>
             {
                 if (excelDate < 1)
+                {
                     throw new ArgumentException("Excel dates cannot be smaller than 0.");
+                }
 
                 var dateOfReference = new DateTime(1900, 1, 1);
 
                 if (excelDate > 60d)
+                {
                     excelDate = excelDate - 2;
+
+                }
                 else
+                {
                     excelDate = excelDate - 1;
+                }
+
                 return dateOfReference.AddDays(excelDate);
             });
 
@@ -48,6 +56,7 @@ namespace ToyotaSpec.Utils
                 .Select(prop =>
                 {
                     var displayAttribute = (DisplayAttribute)prop.GetCustomAttributes(typeof(DisplayAttribute), false).FirstOrDefault();
+
                     return new
                     {
                         Name = prop.Name,
@@ -58,12 +67,11 @@ namespace ToyotaSpec.Utils
                         HasDisplayName = displayAttribute != null
                     };
                 })
-            .Where(prop => !string.IsNullOrWhiteSpace(prop.DisplayName))
-            .ToList();
+                .Where(prop => !string.IsNullOrWhiteSpace(prop.DisplayName))
+                .ToList();
 
             var retList = new List<T>();
             var columns = new List<ExcelMap>();
-
             var start = worksheet.Dimension.Start;
             var end = worksheet.Dimension.End;
             var startCol = start.Column;
@@ -75,6 +83,7 @@ namespace ToyotaSpec.Utils
             for (int col = startCol; col <= endCol; col++)
             {
                 var cellValue = (worksheet.Cells[startRow, col].Value ?? string.Empty).ToString().Trim();
+
                 if (!string.IsNullOrWhiteSpace(cellValue))
                 {
                     columns.Add(new ExcelMap()
@@ -89,7 +98,7 @@ namespace ToyotaSpec.Utils
             }
 
             // Now iterate over all the rows
-            for (int rowIndex = startRow + 1; rowIndex <= endRow; rowIndex++)
+            for (var rowIndex = startRow + 1; rowIndex <= endRow; rowIndex++)
             {
                 var item = new T();
                 columns.ForEach(column =>
@@ -141,7 +150,7 @@ namespace ToyotaSpec.Utils
                         }
                         else if (propertyType == typeof(DateTime?) || propertyType == typeof(DateTime))
                         {
-                            parsedValue = convertDateTime((double)value);
+                            if (value != null) parsedValue = convertDateTime((double) value);
                         }
                         else if (propertyType.IsEnum)
                         {

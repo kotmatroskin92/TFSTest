@@ -10,8 +10,6 @@ namespace TestFramework.Elements
 {
     public abstract class ElementFinder : ApplicationBase, ITransientErrorDetectionStrategy
     {
-        private readonly RetryStrategy _simpleStrategy = new Incremental(4, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(0.5));
-
         protected IWebDriver Driver => LazyDriver;
 
         public bool IsTransient(Exception ex)
@@ -31,13 +29,15 @@ namespace TestFramework.Elements
 
         protected ReadOnlyCollection<IWebElement> FindElements(By targetElementLocator, By parentElementLocator = null)
         {
+            var simpleStrategy = new Incremental(4, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(0.5));
+
             if (parentElementLocator != null)
             {
-                return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
+                return new RetryPolicy(this, simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
                     FindChildren(parentElementLocator, targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
             }
 
-            return new RetryPolicy(this, _simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
+            return new RetryPolicy(this, simpleStrategy).ExecuteAction(() => new ReadOnlyCollection<IWebElement>(
                 Driver.FindElements(targetElementLocator).Where(el => el.Displayed && el.Enabled).ToList()));
         }
 

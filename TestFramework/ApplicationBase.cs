@@ -45,6 +45,11 @@ namespace TestFramework
                 _driver.Value.Dispose();
                 _driver.Value = null;
             }
+            else
+            {
+                Log.TestLog.Warn("Browser is not exist");
+
+            }
         }
     }
 }

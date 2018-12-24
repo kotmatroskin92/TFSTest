@@ -1,14 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using TestFramework.Elements;
 
 namespace TestFramework.Forms
 {
     public class BaseForm : ElementFinder
     {
-        protected BaseForm(By targetElementlocator, string formName)
+        protected BaseForm(By targetElementLocator, string formName)
         {
-            Assert.IsTrue(IsVisible(targetElementlocator), "Element is not present");
+            WaitForElement(targetElementLocator);
             Log.TestLog.Info(formName + " was opened");
         }
     }

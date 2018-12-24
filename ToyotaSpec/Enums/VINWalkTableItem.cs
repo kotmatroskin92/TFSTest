@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace ToyotaSpec.Enums
+﻿namespace ToyotaSpec.Enums
 {
     public sealed class VinWalkTableItem
     {
-        private readonly String _name;
+        private readonly string _name;
         public static readonly VinWalkTableItem Vin = new VinWalkTableItem(0, "VIN");
         public static readonly VinWalkTableItem Year = new VinWalkTableItem(1, "Year");
         public static readonly VinWalkTableItem Make = new VinWalkTableItem(2, "Make");
@@ -32,13 +30,13 @@ namespace ToyotaSpec.Enums
         public int Value { get; }
 
 
-        private VinWalkTableItem(int value, String name)
+        private VinWalkTableItem(int value, string name)
         {
             Value = value;
             _name = name;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return _name;
         }

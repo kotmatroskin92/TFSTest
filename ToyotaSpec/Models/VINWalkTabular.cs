@@ -81,16 +81,20 @@ namespace ToyotaSpec.Models
                 {
                     this[name] = "null";
                 }
+
                 if (tabular[name] is null)
                 {
                     tabular[name] = "null";
                 }
+
                 tabular[name] = tabular[name] ?? "null";
+
                 if (!this[name].ToString().Contains(tabular[name].ToString()))
                 {
                     return false;
                 }
             }
+
             return true;
         }
     }

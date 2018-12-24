@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TestFramework.Utils;
+using TestFramework.Utilities;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
-using ToyotaSpec.Objects;
 using ToyotaSpec.Steps;
 
 namespace ToyotaSpec.Tests
@@ -29,6 +28,7 @@ namespace ToyotaSpec.Tests
         private void AssertTabularSort(List<VinWalkTabular>  vinWalkTabular)
         {
             var softAssert = new SoftAssertions();
+
             for (var index = 1; index < vinWalkTabular.Count; index++)
             {
                 var firstCar = vinWalkTabular[index - 1];

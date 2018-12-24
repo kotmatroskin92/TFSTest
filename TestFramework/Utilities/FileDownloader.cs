@@ -43,6 +43,7 @@ namespace TestFramework.Utilities
         public static string[] WaitForDownload(string fileNamePattern, TimeSpan waitTime)
         {
             const int sleepTime = 200;
+
             for (var time = 0; !Exists(fileNamePattern) || IsFileDownloadingInProgress(fileNamePattern); time += sleepTime)
             {
                 if (time > waitTime.TotalMilliseconds)

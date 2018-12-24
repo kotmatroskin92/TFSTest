@@ -1,18 +1,16 @@
-﻿using System;
-
-namespace ToyotaSpec.Enums
+﻿namespace ToyotaSpec.Enums
 {
     public sealed class ReportName
     {
-        private readonly String _name;
+        private readonly string _name;
         public static readonly ReportName VinWalk = new ReportName("VIN Walk");
 
-        private ReportName(String name)
+        private ReportName(string name)
         {
             _name = name;
         }
 
-        public override String ToString()
+        public override string ToString()
         {
             return _name;
         }

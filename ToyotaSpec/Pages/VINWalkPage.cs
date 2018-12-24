@@ -1,10 +1,9 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
-using TestFramework;
 using TestFramework.Forms;
 using ToyotaSpec.Enums;
 using ToyotaSpec.Models;
-using ToyotaSpec.Utils;
+using ToyotaSpec.Utilities;
 
 namespace ToyotaSpec.Pages
 {
@@ -21,17 +20,21 @@ namespace ToyotaSpec.Pages
 
         public void SortTableBy(VinWalkTableItem vinWalkTable)
         {
-            var element = new TableUtils(_tableTabular).GetHeaderElementByIndex(vinWalkTable.Value);
+            var element = new TableUtilities(_tableTabular).GetHeaderElementByIndex(vinWalkTable.Value);
             if (element.Text == vinWalkTable.ToString())
             {
                 element.Click();
+            }
+            else
+            {
+                Log.TestLog.Warn($"Table header expected: {vinWalkTable} but actual: {element.Text}");
             }
         }
 
         public List<VinWalkTabular> GetFullTabular()
         {
             var tabularList = new List<VinWalkTabular>(); 
-            var table = new TableUtils(_tableTabular);
+            var table = new TableUtilities(_tableTabular);
             var bodyCells = table.GetBodyCells();
             foreach (var cells in bodyCells)
             {
@@ -67,8 +70,9 @@ namespace ToyotaSpec.Pages
         public List<VinWalkTabular> GetVinYearTabular()
         {
             var tabularList = new List<VinWalkTabular>();
-            var table = new TableUtils(_tableTabular);
+            var table = new TableUtilities(_tableTabular);
             var bodyCells = table.GetBodyCells();
+
             foreach (var cells in bodyCells)
             {
                 tabularList.Add(new VinWalkTabular

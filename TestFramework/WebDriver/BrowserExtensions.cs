@@ -9,7 +9,7 @@ namespace TestFramework.WebDriver
 
         public static Log Log = new Log();
 
-        public static string getCurrentUrl(this IWebDriver webDriver)
+        public static string GetCurrentUrl(this IWebDriver webDriver)
         {
             return webDriver.Url;
         }

@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestFramework.Utils
+namespace TestFramework.Utilities
 {
     public class SoftAssertions
     {
@@ -31,6 +31,7 @@ namespace TestFramework.Utils
         public void AssertAll()
         {
             var failed = _verifications.Where(v => v.Failed).ToList();
+
             if (failed.Count > 0)
             {
                 var message = string.Empty;
@@ -53,14 +54,16 @@ namespace TestFramework.Utils
                 _message = message;
                 _expected = expected;
                 _actual = actual;
-
                 Failed = _expected != _actual;
-                if (Failed)
+
+                if (!Failed)
                 {
-                    // TODO Add additional message
-                    var additionalMessage = string.Empty;
-                    _message += $".{additionalMessage}";
+                    return;
                 }
+
+                // TODO Add additional message
+                var additionalMessage = string.Empty;
+                _message += $".{additionalMessage}";
             }
 
             public override string ToString()

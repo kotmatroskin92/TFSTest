@@ -3,13 +3,13 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 
-namespace ToyotaSpec.Utils
+namespace ToyotaSpec.Utilities
 {
-    public class CsvUtils
+    public class CsvUtilities
     {
         private readonly CsvReader _csv;
 
-        public CsvUtils(string path)
+        public CsvUtilities(string path)
         {
             var steam = File.OpenText(path);
             var config = new CsvHelper.Configuration.Configuration

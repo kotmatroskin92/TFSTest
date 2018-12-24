@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using TestFramework;
 using TestFramework.Forms;
 using ToyotaSpec.Pages.forms;
 
@@ -13,6 +12,5 @@ namespace ToyotaSpec.Pages
         public HomePage() : base(_lblHomePage, "Home page")
         {
         }
-
     }
 }

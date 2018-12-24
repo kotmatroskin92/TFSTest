@@ -1,10 +1,9 @@
 ﻿using System;
 using OpenQA.Selenium;
-using TestFramework;
 using TestFramework.Forms;
 using ToyotaSpec.Enums;
 
-namespace ToyotaSpec.Pages
+namespace ToyotaSpec.Pages.forms
 {
     class ReportForm: BaseForm
     {
