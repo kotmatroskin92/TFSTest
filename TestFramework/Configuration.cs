@@ -23,10 +23,11 @@ namespace TestFramework
         [DefaultValue(typeof(TimeSpan), "00:01:10")]
         public TimeSpan DefaultDownloadTimeout { get; set; }
 
-        [JsonProperty("browser.name")]
+        [JsonProperty("browser.Name")]
         public Browser Browser { get; set; }
 
-        [JsonProperty("browser.headless")]
+        [JsonProperty("browser.Headless")]
+        [DefaultValue(typeof(bool), "false")]
         public bool IsHeadless { get; set; }
 
         [DefaultValue("")]
